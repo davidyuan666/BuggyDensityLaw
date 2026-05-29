@@ -5,41 +5,41 @@
 <title>图5：多模态融合架构图</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+*{margin:0;padding:0;box-sizing:border-box;word-break:break-word;overflow-wrap:break-word}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
 .toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
 .toolbar span{color:#666;font-size:17px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:17px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
 #canvas{width:1200px;background:#fff;border:1px solid #dee2e6;padding:24px 28px;margin-top:48px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .title{text-align:center;margin-bottom:18px}.title h1{font-size:34px;color:#222;font-weight:700}.title .sub{font-size:17px;color:#666;margin-top:4px}
 .section-label{font-size:19px;color:#999;text-align:center;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
-.input-row{display:flex;gap:16px;margin-bottom:12px}
-.input-block{flex:1;border:1px solid #dee2e6;border-radius:8px;padding:16px;text-align:center}
+.input-row{display:flex;gap:12px;margin-bottom:12px}
+.input-block{flex: 1 1 auto; min-width: 120px;border:1px solid #dee2e6;border-radius:8px;padding:16px;text-align:center}
 .input-block h4{font-size:17px;color:#333;font-weight:700;margin-bottom:8px}
 .input-block .items{font-size:14px;color:#666;line-height:1.8}
 .ib1{border-top:3px solid #e74c3c;background:#fdf2f2}
 .ib2{border-top:3px solid #2980b9;background:#f0f7ff}
 .ib3{border-top:3px solid #27ae60;background:#f0fff4}
 .arrow-down-center{text-align:center;color:#bbb;font-size:34px;padding:2px 0}
-.encoder-row{display:flex;gap:16px;margin-bottom:12px}
-.encoder{flex:1;border:1px dashed #dee2e6;border-radius:6px;padding:12px;text-align:center;font-size:19px;background:#fefefe}
+.encoder-row{display:flex;gap:12px;margin-bottom:12px}
+.encoder{flex: 1 1 auto; min-width: 120px;border:1px dashed #dee2e6;border-radius:6px;padding:12px;text-align:center;font-size:19px;background:#fefefe}
 .encoder h4{font-size:20px;color:#444;margin-bottom:4px}
 .encoder p{font-size:14px;color:#888}
 .enc1{border-color:#e74c3c}.enc1 h4{color:#c0392b}
 .enc2{border-color:#2980b9}.enc2 h4{color:#1a5276}
 .enc3{border-color:#27ae60}.enc3 h4{color:#1e8449}
-.fusion-box{border:2px solid #8e44ad;border-radius:10px;padding:12px 14px;margin:16px 0;background:#faf5ff;text-align:center}
+.fusion-box{ overflow: visible;border:2px solid #8e44ad;border-radius:10px;padding:10px 12px;margin:16px 0;background:#faf5ff;text-align:center}
 .fusion-box h3{font-size:19px;color:#6c3483;font-weight:700;margin-bottom:12px}
 .fusion-formula{font-size:17px;color:#6c3483;font-family:"Courier New",monospace;margin-bottom:10px}
 .fusion-formula span{display:inline-block;margin:0 4px;padding:2px 8px;border-radius:3px;background:#eee;color:#555;font-size:19px}
-.gate-row{display:flex;gap:16px;margin-top:12px}
-.gate{flex:1;border:1px solid #d2b4de;border-radius:6px;padding:8px;text-align:center;font-size:14px;color:#6c3483;background:#faf5ff}
+.gate-row{display:flex;gap:12px;margin-top:12px}
+.gate{flex: 1 1 auto; min-width: 120px;border:1px solid #d2b4de;border-radius:6px;padding:8px;text-align:center;font-size:14px;color:#6c3483;background:#faf5ff}
 .gate strong{display:block;font-size:20px;margin-bottom:4px}
-.str-box{border:1px solid #dee2e6;border-radius:8px;padding:16px 20px;margin-top:16px;background:#f8f9fa}
+.str-box{ overflow: visible;border:1px solid #dee2e6;border-radius:8px;padding:16px 20px;margin-top:16px;background:#f8f9fa}
 .str-box h3{font-size:34px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
 .str-fields{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .str-field{background:#fff;border:1px solid #dee2e6;border-radius:4px;padding:8px 14px;font-size:19px;color:#444;white-space:nowrap}
 .str-field strong{color:#222;margin-right:4px}
 .downstream-row{display:flex;gap:12px;margin-top:16px}
-.down{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:10px;text-align:center;font-size:19px;color:#555;background:#fff}
+.down{flex: 1 1 auto; min-width: 120px;border:1px solid #dee2e6;border-radius:6px;padding:10px;text-align:center;font-size:19px;color:#555;background:#fff}
 .down strong{color:#333;display:block;margin-bottom:4px;font-size:20px}
 </style>
 </head>

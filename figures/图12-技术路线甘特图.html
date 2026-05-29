@@ -5,7 +5,7 @@
 <title>图12：技术路线甘特图</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+*{margin:0;padding:0;box-sizing:border-box;word-break:break-word;overflow-wrap:break-word}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
 .toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
 .toolbar span{color:#666;font-size:17px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:17px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
 #canvas{width:1200px;background:#fff;border:1px solid #dee2e6;padding:24px 28px;margin-top:48px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
@@ -15,17 +15,17 @@
 .gantt-task-col{width:260px;flex-shrink:0;padding:4px 8px;font-size:20px;color:#888;font-weight:600;text-align:center;border-right:1px solid #dee2e6}
 .gantt-timeline{flex:1}
 .year-header{display:flex}
-.year-col{flex:1;text-align:center;padding:6px;font-size:20px;color:#333;font-weight:600;border-right:1px solid #eee}
+.year-col{flex: 1 1 auto; min-width: 120px;text-align:center;padding:6px;font-size:20px;color:#333;font-weight:600;border-right:1px solid #eee}
 .month-header{display:flex}
-.month-col{flex:1;text-align:center;padding:3px;font-size:14px;color:#aaa;border-right:1px solid #f0f0f0}
+.month-col{flex: 1 1 auto; min-width: 120px;text-align:center;padding:3px;font-size:14px;color:#aaa;border-right:1px solid #f0f0f0}
 .gantt-row{display:flex;border-bottom:1px solid #f0f0f0;min-height:36px;align-items:center}
 .gantt-row .task-label{width:260px;flex-shrink:0;padding:4px 12px;font-size:19px;color:#444;border-right:1px solid #dee2e6}
-.gantt-row .bar-area{flex:1;position:relative;height:36px;display:flex}
+.gantt-row .bar-area{flex: 1 1 auto; min-width: 120px;position:relative;height:36px;display:flex}
 .group-header{background:#f8f9fa;font-weight:700}
 .group-header .task-label{color:#222;font-weight:700;font-size:20px}
 .milestone-row{display:flex;align-items:center;min-height:32px}
 .milestone-row .task-label{width:260px;flex-shrink:0;padding:4px 12px;font-size:14px;color:#666;border-right:1px solid #dee2e6}
-.milestone-dots{flex:1;position:relative;height:32px}
+.milestone-dots{flex: 1 1 auto; min-width: 120px;position:relative;height:32px}
 .milestone-dot{position:absolute;top:8px;width:10px;height:10px;border-radius:50%;border:2px solid #e74c3c;background:#fff}
 .milestone-dot .mlabel{position:absolute;top:-4px;left:14px;font-size:14px;color:#c0392b;white-space:nowrap}
 .bar-col-1{background:#3498db;position:absolute;top:8px;height:20px;border-radius:3px}
@@ -136,7 +136,7 @@
 <div class="legend-item"><div class="legend-swatch" style="background:#e67e22"></div>研究内容3 &mdash; 组合式正确性</div>
 </div>
 
-<div style="margin-top:20px;border:1px solid #dee2e6;border-radius:6px;padding:12px 14px;background:#f8f9fa">
+<div style="margin-top:20px;border:1px solid #dee2e6;border-radius:6px;padding:10px 12px;background:#f8f9fa">
 <h4 style="font-size:17px;color:#333;margin-bottom:10px;font-weight:700">关键里程碑</h4>
 <table style="width:100%;border-collapse:collapse;font-size:19px">
 <tr style="background:#f0f5f9"><th style="padding:8px;border:1px solid #dee2e6;text-align:left;color:#333">里程碑</th><th style="padding:8px;border:1px solid #dee2e6;color:#333">时间</th><th style="padding:8px;border:1px solid #dee2e6;color:#333">交付物</th></tr>
