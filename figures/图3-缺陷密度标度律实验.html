@@ -21,7 +21,7 @@ body { background: #e8ecf1; font-family: "Microsoft YaHei","Helvetica Neue",Aria
 .chart-area { flex: 1 1 auto; min-width: 120px; min-height: 400px; }
 .chart-area canvas { width: 100% !important; }
 .stats-area { flex: 0.7; }
-.stat-card { overflow: visible; overflow: visible; border: 1px solid #dee2e6; border-radius: 4px; padding: 16px 18px; margin-bottom: 14px; }
+.stat-card { overflow: visible; border: 1px solid #dee2e6; border-radius: 4px; padding: 16px 18px; margin-bottom: 14px; }
 .stat-card h3 { font-size: 13px; color: #333; margin-bottom: 10px; font-weight: 700; }
 .stat-card .val { font-size: 26px; font-weight: 700; color: #222; }
 .stat-card .unit { font-size: 13px; color: #888; font-weight: 400; margin-left: 4px; }
@@ -59,7 +59,6 @@ td { color: #444; }
       <div class="stat-card">
         <h3>幂律拟合结果</h3>
         <div><span class="val">0.179</span><span class="unit">alpha</span></div>
-        <div class="eq">
         <div class="ci">95% CI: [0.083, 0.274] &nbsp; R<sup>2</sup> = 0.266</div>
         <div class="desc">N = 39, p &lt; 0.01</div>
       </div>
@@ -112,7 +111,7 @@ for (var x = minX; x <= maxX; x += 1) {
     fitPoints.push({x: x, y: c_fit * Math.pow(x, a_fit)});
 }
 datasets.push({
-    label: '拟合曲线: DD = 3.986·LOC^0.179
+    label: '拟合曲线',
     data: fitPoints,
     type: 'line',
     borderColor: '#e74c3c',
