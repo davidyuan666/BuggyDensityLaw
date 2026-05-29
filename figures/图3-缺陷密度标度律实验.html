@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>图10：缺陷密度标度律实验</title>
+<title>图3：缺陷密度标度律实验</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
@@ -41,7 +41,7 @@ td { color: #444; }
 <body>
 
 <div class="toolbar">
-  <span>图10：LLM代码生成缺陷密度标度律实验</span>
+  <span>图3：LLM代码生成缺陷密度标度律实验</span>
   <button onclick="downloadPNG()">Download PNG (2x)</button>
 </div>
 
@@ -154,7 +154,7 @@ new Chart(document.getElementById('scalingChart').getContext('2d'), {
 function downloadPNG() {
     html2canvas(document.getElementById('canvas'), { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(function(c) {
         var link = document.createElement('a');
-        link.download = 'Figure10-Defect-Density-Scaling-Law.png';
+        link.download = 'Figure3-Defect-Density-Scaling-Law.png';
         link.href = c.toDataURL('image/png');
         link.click();
     });
