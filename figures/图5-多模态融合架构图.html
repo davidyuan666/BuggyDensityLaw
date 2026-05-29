@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图5：多模态融合架构图</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:28px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
+.section-label{font-size:11px;color:#999;text-align:center;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
+.input-row{display:flex;gap:16px;margin-bottom:12px}
+.input-block{flex:1;border:1px solid #dee2e6;border-radius:8px;padding:16px;text-align:center}
+.input-block h4{font-size:13px;color:#333;font-weight:700;margin-bottom:8px}
+.input-block .items{font-size:10px;color:#666;line-height:1.8}
+.ib1{border-top:3px solid #e74c3c;background:#fdf2f2}
+.ib2{border-top:3px solid #2980b9;background:#f0f7ff}
+.ib3{border-top:3px solid #27ae60;background:#f0fff4}
+.arrow-down-center{text-align:center;color:#bbb;font-size:14px;padding:2px 0}
+.encoder-row{display:flex;gap:16px;margin-bottom:12px}
+.encoder{flex:1;border:1px dashed #dee2e6;border-radius:6px;padding:12px;text-align:center;font-size:11px;background:#fefefe}
+.encoder h4{font-size:12px;color:#444;margin-bottom:4px}
+.encoder p{font-size:10px;color:#888}
+.enc1{border-color:#e74c3c}.enc1 h4{color:#c0392b}
+.enc2{border-color:#2980b9}.enc2 h4{color:#1a5276}
+.enc3{border-color:#27ae60}.enc3 h4{color:#1e8449}
+.fusion-box{border:2px solid #8e44ad;border-radius:10px;padding:20px 24px;margin:16px 0;background:#faf5ff;text-align:center}
+.fusion-box h3{font-size:15px;color:#6c3483;font-weight:700;margin-bottom:12px}
+.fusion-formula{font-size:13px;color:#6c3483;font-family:"Courier New",monospace;margin-bottom:10px}
+.fusion-formula span{display:inline-block;margin:0 4px;padding:2px 8px;border-radius:3px;background:#eee;color:#555;font-size:11px}
+.gate-row{display:flex;gap:16px;margin-top:12px}
+.gate{flex:1;border:1px solid #d2b4de;border-radius:6px;padding:8px;text-align:center;font-size:10px;color:#6c3483;background:#faf5ff}
+.gate strong{display:block;font-size:12px;margin-bottom:4px}
+.str-box{border:1px solid #dee2e6;border-radius:8px;padding:16px 20px;margin-top:16px;background:#f8f9fa}
+.str-box h3{font-size:14px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
+.str-fields{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.str-field{background:#fff;border:1px solid #dee2e6;border-radius:4px;padding:8px 14px;font-size:11px;color:#444;white-space:nowrap}
+.str-field strong{color:#222;margin-right:4px}
+.downstream-row{display:flex;gap:12px;margin-top:16px}
+.down{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:10px;text-align:center;font-size:11px;color:#555;background:#fff}
+.down strong{color:#333;display:block;margin-bottom:4px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>图5：多模态融合架构图</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div id="canvas">
+<div class="title"><h1>门控注意力多模态融合架构</h1><div class="sub">视觉-文本-知识三模态融合与结构化任务表示</div></div>
+
+<div class="section-label">&#9670; 多模态输入</div>
+<div class="input-row">
+<div class="input-block ib1"><h4>&#9680; 视觉模态 V</h4><div class="items">P&amp;ID工艺流程图<br>CAD工程图纸<br>设备布局图<br>电路接线图</div></div>
+<div class="input-block ib2"><h4>&#9638; 文本模态 T</h4><div class="items">自然语言需求<br>PDF操作手册<br>安全规范文档<br>接口说明文档</div></div>
+<div class="input-block ib3"><h4>&#9671; 知识模态 K</h4><div class="items">工业知识图谱<br>IEC 61131-3标准<br>安全属性模板<br>历史代码模式</div></div>
+</div>
+
+<div class="arrow-down-center">&#9660; &#9660; &#9660;</div>
+
+<div class="section-label">&#9670; 编码器层</div>
+<div class="encoder-row">
+<div class="encoder enc1"><h4>视觉编码器</h4><p>LayoutXLM + ResNet-152<br>&#8594; v = E<sub>v</sub>(V) &isin; R<sup>d</sup></p></div>
+<div class="encoder enc2"><h4>文本编码器</h4><p>BERT-wwm / RoBERTa<br>&#8594; t = E<sub>t</sub>(T) &isin; R<sup>d</sup></p></div>
+<div class="encoder enc3"><h4>知识编码器</h4><p>TransE / GraphSAGE<br>&#8594; k = E<sub>k</sub>(K) &isin; R<sup>d</sup></p></div>
+</div>
+
+<div class="arrow-down-center">&#9660; &#9660; &#9660;</div>
+
+<div class="fusion-box">
+<h3>&#9670; 门控注意力多模态融合层</h3>
+<div class="fusion-formula">
+F = g<sub>V</sub> &middot; v &oplus; g<sub>T</sub> &middot; t &oplus; g<sub>K</sub> &middot; k
+</div>
+<div class="gate-row">
+<div class="gate"><strong>g<sub>V</sub> = &sigma;(W<sub>V</sub>[v;t;k])</strong>视觉门控权重<br>控制视觉特征贡献度</div>
+<div class="gate"><strong>g<sub>T</sub> = &sigma;(W<sub>T</sub>[v;t;k])</strong>文本门控权重<br>控制文本特征贡献度</div>
+<div class="gate"><strong>g<sub>K</sub> = &sigma;(W<sub>K</sub>[v;t;k])</strong>知识门控权重<br>控制知识特征贡献度</div>
+</div>
+<p style="font-size:10px;color:#888;margin-top:10px">其中 &sigma; 为 sigmoid 函数，[v;t;k] 表示拼接操作，&oplus; 为逐元素加权和</p>
+</div>
+
+<div class="arrow-down-center">&#9660;</div>
+
+<div class="str-box">
+<h3>&#9670; STR 结构化任务表示</h3>
+<div class="str-fields">
+<div class="str-field"><strong>任务描述</strong> 功能语义</div>
+<div class="str-field"><strong>I/O定义</strong> 变量与类型</div>
+<div class="str-field"><strong>时序约束</strong> 周期/截止</div>
+<div class="str-field"><strong>安全属性</strong> LTL/CTL</div>
+<div class="str-field"><strong>物理约束</strong> 设备限制</div>
+<div class="str-field"><strong>接口规范</strong> 模块签名</div>
+</div>
+</div>
+
+<div class="arrow-down-center">&#9660;</div>
+
+<div style="text-align:center;font-size:11px;color:#999;margin-bottom:8px">&#9670; 下游任务</div>
+<div class="downstream-row">
+<div class="down"><strong>代码生成</strong>LLM Agent生成<br>IEC 61131-3 ST代码</div>
+<div class="down"><strong>安全验证</strong>Z3 SMT / NuSMV<br>形式化属性验证</div>
+<div class="down"><strong>仿真测试</strong>数字孪生仿真<br>功能安全评估</div>
+</div>
+</div>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure5-MultimodalFusion.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+</body>
+</html>

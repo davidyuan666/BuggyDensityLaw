@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>图7：形式化缺陷天花板效应</title>
+<title>图11：形式化缺陷天花板效应</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
@@ -30,7 +30,7 @@ body { background: #e8ecf1; font-family: "Microsoft YaHei","Helvetica Neue",Aria
 <body>
 
 <div class="toolbar">
-  <span>图7：形式化缺陷天花板 &mdash; Safety Property 通过率 Before/After Verification</span>
+  <span>图11：形式化缺陷天花板 &mdash; Safety Property 通过率 Before/After Verification</span>
   <button onclick="downloadPNG()">Download PNG (2x)</button>
 </div>
 
@@ -135,7 +135,7 @@ new Chart(document.getElementById('gainChart').getContext('2d'), {
 function downloadPNG() {
     html2canvas(document.getElementById('canvas'), { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(function(c) {
         var link = document.createElement('a');
-        link.download = 'Figure7-Formal-Defect-Ceiling.png';
+        link.download = 'Figure11-Formal-Defect-Ceiling.png';
         link.href = c.toDataURL('image/png');
         link.click();
     });

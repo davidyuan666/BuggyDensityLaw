@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 10: Compositional vs Monolithic Defect Density</title>
+<title>Figure6: Compositional vs Monolithic Defect Density</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>图10：组合式正确性 vs 单体生成</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图6：组合式正确性 vs 单体生成</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
   <div class="title"><h1>突破标度律：组合式正确性 vs 单体生成</h1><div class="sub">分解为k个独立验证子模块后的系统级缺陷密度 (&epsilon;=0.05, N=200 LOC)</div></div>
   <div class="charts">
@@ -57,7 +57,7 @@ plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:tr
 scales:{x:{title:{display:true,text:'子模块数量 (k)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
 y:{title:{display:true,text:'优势比',color:'#333'},ticks:{color:'#666',callback:function(v){return v.toExponential(0)}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
-function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure10-Compositional-vs-Monolithic.png';l.href=c.toDataURL('image/png');l.click()})}
+function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure6-Compositional-vs-Monolithic.png';l.href=c.toDataURL('image/png');l.click()})}
 </script>
 </body>
 </html>

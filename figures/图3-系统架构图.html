@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图3：系统架构图</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:28px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
+.stages{display:flex;gap:16px;margin-bottom:16px}
+.stage{flex:1;border-radius:8px;padding:18px 16px;text-align:center;border:1px solid #dee2e6;position:relative}
+.stage .num{width:32px;height:32px;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:10px}
+.stage h3{font-size:14px;margin-bottom:8px;font-weight:700}
+.stage p{font-size:11px;line-height:1.6;color:#555}
+.s1{background:#eaf2f8;border-top:3px solid #2980b9}.s1 .num{background:#2980b9}.s1 h3{color:#1a5276}
+.s2{background:#e8f8f5;border-top:3px solid #27ae60}.s2 .num{background:#27ae60}.s2 h3{color:#1e8449}
+.s3{background:#fef9e7;border-top:3px solid #e67e22}.s3 .num{background:#e67e22}.s3 h3{color:#ba4a00}
+.s4{background:#f4ecf7;border-top:3px solid #8e44ad}.s4 .num{background:#8e44ad}.s4 h3{color:#6c3483}
+.arrows{display:flex;justify-content:center;align-items:center;margin-bottom:16px;gap:12px}
+.arrow-box{display:flex;align-items:center;gap:8px}
+.arrow-box .arr{color:#aaa;font-size:18px;font-weight:700}
+.arrow-box .label{font-size:11px;color:#888;background:#f8f9fa;padding:3px 10px;border-radius:10px;border:1px solid #e9ecef}
+.innovations{display:flex;gap:16px;margin-bottom:16px}
+.inno{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:14px 18px;background:#fafbfc}
+.inno h4{font-size:13px;color:#333;margin-bottom:6px;font-weight:700}
+.inno p{font-size:11px;color:#555;line-height:1.6}
+.inno1{border-left:3px solid #2980b9}
+.inno2{border-left:3px solid #27ae60}
+.footer{text-align:center;padding:12px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:4px;font-size:12px;color:#888}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>图3：系统架构图</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div id="canvas">
+<div class="title"><h1>面向工业控制的LLM代码生成与数字孪生验证系统架构</h1><div class="sub">四阶段流水线：从多模态需求输入到闭环仿真验证</div></div>
+
+<div class="stages">
+<div class="stage s1"><div class="num">1</div><h3>多模态需求输入</h3><p>自然语言需求<br>P&amp;ID工艺流程图<br>PDF操作手册<br>CAD工程图纸<br>传感器信号清单</p></div>
+<div class="stage s2"><div class="num">2</div><h3>多模态语义理解</h3><p>工业知识图谱<br>LayoutXLM文档解析<br>门控注意力融合<br>结构化STR输出<br>安全约束提取</p></div>
+<div class="stage s3"><div class="num">3</div><h3>LLM Agent代码生成与验证</h3><p>ReAct框架控制<br>CoT链条推理<br>Z3/NuSMV形式化验证<br>生成-验证-修正循环<br>多Agent协同审查</p></div>
+<div class="stage s4"><div class="num">4</div><h3>数字孪生仿真验证</h3><p>物理引擎仿真<br>系统辨识与校准<br>功能安全测试<br>闭环反馈优化<br>部署可行性评估</p></div>
+</div>
+
+<div class="arrows">
+<div class="arrow-box"><span class="arr">&#10132;</span><span class="label">多模态特征</span></div>
+<div class="arrow-box"><span class="arr">&#10132;</span><span class="label">结构化STR</span></div>
+<div class="arrow-box"><span class="arr">&#10132;</span><span class="label">已验证代码</span></div>
+</div>
+
+<div class="innovations">
+<div class="inno inno1"><h4>&#9670; 创新点一：门控注意力多模态融合机制</h4><p>提出基于门控注意力的多模态语义融合层，自适应学习视觉、文本和知识的融合权重，实现工业场景下多源异构需求的精确结构化表征。</p></div>
+<div class="inno inno2"><h4>&#9670; 创新点二：生成-验证-修正闭环Agent架构</h4><p>设计"LLM生成→形式化验证→数字孪生仿真"的闭环Agent框架，通过ReAct决策与Z3/NuSMV双验证器实现工业控制代码的正确性保障。</p></div>
+</div>
+
+<div class="footer">粤莞联合基金重点项目 &middot; 课题组 &middot; 2027-2029</div>
+</div>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure3-SystemArchitecture.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+</body>
+</html>

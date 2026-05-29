@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>图11：验证复杂度标度律</title>
+<title>图7：验证复杂度标度律</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>图11：验证复杂度标度律</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图7：验证复杂度标度律</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
   <div class="title"><h1>验证复杂度标度律：形式化缺陷天花板的有效边界</h1><div class="sub">Z3 SMT求解时间和NuSMV模型检测时间随代码规模（LOC）和安全属性数量（|Φ|）的增长曲线 (|&Phi;|)</div></div>
   <div class="charts">
@@ -54,7 +54,7 @@ plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:tr
 scales:{x:{title:{display:true,text:'属性数量 (|\u03A6|)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
 y:{title:{display:true,text:'求解时间 (ms)',color:'#333'},ticks:{color:'#666',callback:function(v){return v>999?(v/1000).toFixed(1)+'s':v+' ms'}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
-function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure11-Verification-Scaling.png';l.href=c.toDataURL('image/png');l.click()})}
+function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure7-Verification-Scaling.png';l.href=c.toDataURL('image/png');l.click()})}
 </script>
 </body>
 </html>

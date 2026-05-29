@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图4：LLM Agent流程图</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:28px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
+.columns{display:flex;gap:20px;margin-bottom:20px}
+.col{flex:1;border:1px solid #dee2e6;border-radius:8px;padding:18px}
+.col h3{font-size:14px;color:#222;font-weight:700;text-align:center;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #dee2e6}
+.c1 h3{border-color:#2980b9;color:#1a5276}
+.c2 h3{border-color:#e67e22;color:#ba4a00}
+.c3 h3{border-color:#27ae60;color:#1e8449}
+.step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.step .dot{width:10px;height:10px;border-radius:50%;margin-top:3px;flex-shrink:0}
+.step .info{flex:1}
+.step .info h4{font-size:12px;color:#333;font-weight:600;margin-bottom:2px}
+.step .info p{font-size:10px;color:#888;line-height:1.4}
+.s-type{font-size:10px;display:inline-block;padding:1px 6px;border-radius:8px;color:#fff;margin-bottom:4px}
+.s-input{background:#2980b9}
+.s-reason{background:#8e44ad}
+.s-gen{background:#e67e22}
+.s-verify{background:#c0392b}
+.s-ok{background:#27ae60}
+.s-out{background:#2471a3}
+.arrow-down{text-align:center;color:#bbb;font-size:16px;padding:2px 0}
+.clone-box{border:1px dashed #e67e22;border-radius:6px;padding:10px 14px;margin:8px 0;background:#fef9e7}
+.clone-box h4{font-size:11px;color:#ba4a00;margin-bottom:6px}
+.clone-box p{font-size:10px;color:#555;line-height:1.5}
+.diamond{width:80px;margin:8px auto;padding:8px;text-align:center;background:#fdf2e9;border:1px solid #e67e22;border-radius:6px;font-size:11px;color:#ba4a00;font-weight:600}
+.bottom-section{display:flex;gap:20px}
+.bs{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:14px 18px;background:#fafbfc}
+.bs h4{font-size:12px;color:#333;font-weight:600;margin-bottom:8px}
+.bs p{font-size:11px;color:#555;line-height:1.6}
+.bs1{border-left:3px solid #2980b9}
+.bs2{border-left:3px solid #8e44ad}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>图4：LLM Agent流程图</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div id="canvas">
+<div class="title"><h1>LLM Agent代码生成流程图：ReAct + CoT + 验证闭环</h1><div class="sub">三阶段流水线：输入推理 &rarr; 生成-验证-修正循环 &rarr; 输出与仿真验证</div></div>
+
+<div class="columns">
+<div class="col c1">
+<h3>&#9670; 输入与任务推理</h3>
+<div class="step"><div class="dot" style="background:#2980b9"></div><div class="info"><span class="s-type s-input">输入</span><h4>结构化STR输入</h4><p>任务描述 / 接口定义 / 安全属性 / 约束条件 / 时序要求</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="step"><div class="dot" style="background:#8e44ad"></div><div class="info"><span class="s-type s-reason">推理</span><h4>CoT任务规划</h4><p>思维链分解：分解步骤→识别依赖→确定验证策略→规划子任务</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="step"><div class="dot" style="background:#2980b9"></div><div class="info"><span class="s-type s-input">检索</span><h4>RAG增强检索</h4><p>相似代码检索 / 安全模式匹配 / 工业知识图谱查询 / 历史案例复用</p></div></div>
+</div>
+
+<div class="col c2">
+<h3>&#9670; 生成-验证-修正循环</h3>
+<div class="clone-box"><h4>&#x21BA; ReAct Agent（可多轮迭代）</h4><p><strong>Thought:</strong> 分析当前状态和验证反馈 &rarr; <strong>Action:</strong> 调用工具执行操作 &rarr; <strong>Observation:</strong> 收集工具返回结果</p></div>
+<div class="step"><div class="dot" style="background:#e67e22"></div><div class="info"><span class="s-type s-gen">生成</span><h4>代码生成器 (LLM)</h4><p>基于CoT上下文生成工业控制代码（IEC 61131-3 ST语言 / C语言）</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="step"><div class="dot" style="background:#c0392b"></div><div class="info"><span class="s-type s-verify">验证</span><h4>Agent工具集</h4><p>Z3: 安全属性SMT验证 / NuSMV: 活性与互斥检验 / 语法AST检查</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="diamond">&#9681; 通过验证？</div>
+<div style="display:flex;gap:8px;margin-top:4px">
+<div style="flex:1;text-align:center;font-size:10px;color:#27ae60;padding:6px;border:1px solid #27ae60;border-radius:4px">&#10004; 是<br>输出代码</div>
+<div style="flex:1;text-align:center;font-size:10px;color:#e74c3c;padding:6px;border:1px solid #e74c3c;border-radius:4px">&#10008; 否<br>修正反馈</div>
+</div>
+<div style="text-align:center;font-size:10px;color:#888;margin-top:6px">&#x21B6; 循环反馈 (最多N轮) / 人工干预</div>
+</div>
+
+<div class="col c3">
+<h3>&#9670; 输出与验证</h3>
+<div class="step"><div class="dot" style="background:#27ae60"></div><div class="info"><span class="s-type s-ok">输出</span><h4>通过验证的代码</h4><p>语法正确 / 安全属性满足 / 形式化验证通过 / 风格一致</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="step"><div class="dot" style="background:#2471a3"></div><div class="info"><span class="s-type s-out">仿真</span><h4>数字孪生仿真测试</h4><p>物理引擎仿真 / 时序行为验证 / 边界条件测试 / 故障注入</p></div></div>
+<div class="arrow-down">&#9660;</div>
+<div class="step"><div class="dot" style="background:#27ae60"></div><div class="info"><span class="s-type s-ok">部署</span><h4>最终可部署代码</h4><p>经仿真验证 / 功能安全合规 / 部署文档生成 / 版本归档</p></div></div>
+</div>
+</div>
+
+<div class="bottom-section">
+<div class="bs bs1"><h4>&#9670; 验证示例 (Z3/SMT)</h4><p>安全属性：两个机器臂不可同时进入交叉工作区<br>&#9758; Z3公式: ForAll t, (robot1[t] and robot2[t]) &rArr; not intersect[t]<br>语法检查：AST解析验证变量作用域、类型一致性和未定义引用<br>NuSMV活性：CTL公式 AG (request &rarr; AF grant)</p></div>
+<div class="bs bs2"><h4>&#9670; 工业指令微调策略</h4><p>基于工业控制领域构建指令微调数据集：<br>&#8226; &lt;instruction, STR, code&gt;三元组格式<br>&#8226; LoRA高效微调 + 全参数SFT<br>&#8226; 覆盖IEC 61131-3五种编程语言<br>&#8226; 含安全约束标签的监督信号</p></div>
+</div>
+</div>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure4-LLMAgentFlow.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+</body>
+</html>

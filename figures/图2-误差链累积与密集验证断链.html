@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>图9：误差链累积与密集验证</title>
+<title>图2：误差链累积与密集验证</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>图9：误差链累积与密集验证断链机制</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图2：误差链累积与密集验证断链机制</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
   <div class="title"><h1>缺陷密度标度律的因果机制：自回归生成中的误差链累积</h1><div class="sub">上方：无验证的自回归链（BES定理4.4a：熵壳禁锢） &nbsp;|&nbsp; 下方：密集验证断链（BES定理4.5：指数级效率优势）</div></div>
 
@@ -79,6 +79,6 @@
   <div class="insight"><h4>机制总结：从经验观察到因果解释</h4>
     <p>这张图揭示了缺陷密度标度律背后的因果链条：(a) 无中间验证的自回归生成中，单步错误概率累积形成超线性增长，解释了标度律存在的机制根因；(b) 插入k个密集验证点将误差链截断为k个独立子段，使期望缺陷的渐近增长从超线性降为线性。这一机制同时支撑了"形式化缺陷天花板"（研究内容二）和"组合式正确性"（研究内容三）两条路径。</p></div>
 </div>
-<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure9-ErrorChain-DenseVerification.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure2-ErrorChain-DenseVerification.png';l.href=c.toDataURL('image/png');l.click()})}</script>
 </body>
 </html>
