@@ -63,8 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="insight"><h4>实验覆盖范围与设计理由</h4>
-    <p>The 3&times;4 design systematically covers the industrial control domain (discrete logic, sequential processes, resource coordination) while spanning an order of magnitude in code scale. Repeat counts are inversely proportional to scale (reducing from 4 to 2 as LOC grows) to balance statistical power against computation cost. The four-stage verification pipeline ensures comprehensive defect detection across syntax, functional, and safety-critical dimensions, enabling clean measurement of both the raw defect scaling law (after Step 2) and the verification ceiling effect (after Step 4).</p></div>
+  <div class="insight"><h4>说明</h4><p>3场景×4规模等级×39次独立实验，四阶段验证管道覆盖语法、功能和安全性三维度缺陷检测。</p></div>
 </div>
 <script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure13-ExperimentDesign.png';l.href=c.toDataURL('image/png');l.click()})}</script>
 </body>

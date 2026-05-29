@@ -26,8 +26,7 @@
     <div class="chart-box"><h3>(a) 求解时间 vs 代码规模 (LOC)</h3><canvas id="chart1"></canvas></div>
     <div class="chart-box"><h3>(b) 求解时间 vs 属性数量 (|&Phi;|)</h3><canvas id="chart2"></canvas></div>
   </div>
-  <div class="insight"><h4>形式化天花板的有效覆盖范围</h4>
-    <p>验证复杂度遵循自身的标度律：Z3求解时间大致为T_Z3&#8733;LOC^1.4，NuSMV验证时间约为T_SMV&#8733;LOC^2.1·2^{|Φ|}。关键观察：在LOC<400、属性数量<8的区间内，Z3求解时间在1秒以内——这个窗口足以覆盖绝大多数工业控制子模块。超过这个区间后迅速上升，恰恰说明了天花板的有限半径，也论证了组合式分解（研究内容三）的必要性。</p></div>
+  <div class="insight"><h4>核心观察</h4><p>Z3求解时间的标度（LOC^1.4）显著低于缺陷密度增长的标度，在LOC<400、属性<8的区间内求解时间<1秒。这定义了形式化缺陷天花板的实际有效覆盖半径。</p></div>
   <div class="note">基于Z3 4.12和NuSMV 2.6在工业控制逻辑验证任务上的基准测试数据。</div>
 </div>
 <script>

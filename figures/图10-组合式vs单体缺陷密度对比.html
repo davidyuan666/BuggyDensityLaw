@@ -26,8 +26,7 @@
     <div class="chart-box"><h3>(a) 系统级正确概率</h3><canvas id="chart1"></canvas></div>
     <div class="chart-box"><h3>(b) 预期缺陷密度比值</h3><canvas id="chart2"></canvas></div>
   </div>
-  <div class="insight"><h4>组合式策略的指数级优势</h4>
-    <p>组合式策略在子模块数量上产生了指数级优势。当k=5时（每子模块约40 LOC），组合式生成的系统正确概率达到0.44，而同条件下单体生成的正确概率仅有4.5&#215;10<sup>-5</sup>——差距近8000倍。缺陷密度比值随k呈指数增长，与BES框架Theorem 4.5的理论预测一致。</p></div>
+  <div class="insight"><h4>核心观察</h4><p>组合式策略在子模块数量k上产生指数级优势：k=5时正确概率提升约8000倍。缺陷密度比值随k指数增长，与BES Theorem 4.5的理论预测一致。</p></div>
   <div class="note">子模块大小：n = N/k = 200/k LOC. 子模块验证通过率：p = (1-&epsilon;)<sup>n</sup>.</div>
 </div>
 <script>

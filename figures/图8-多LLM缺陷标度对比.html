@@ -23,8 +23,7 @@
 <div id="canvas">
   <div class="title"><h1>跨LLM缺陷密度标度律：模型对比</h1><div class="sub">GPT-4 / DeepSeek-Coder-V2 / Qwen2.5-Coder-7B 在四个代码规模等级上的缺陷密度</div></div>
   <div class="chart-box"><canvas id="chart"></canvas></div>
-  <div class="insight"><h4>核心观察</h4>
-    <p>缺陷密度标度律（alpha>0）是一个跨模型现象：三种LLM均表现出缺陷密度随代码规模递增的趋势。Qwen2.5-Coder-7B（实心填充，本研究实测）展现出最高的标度指数，GPT-4和DeepSeek-Coder-V2的数据为基于已有基准的预计值。跨模型一致性验证了标度律假说的普适性。</p></div>
+  <div class="insight"><h4>核心观察</h4><p>缺陷密度标度律（alpha>0）在三个LLM上均成立，验证了其跨模型普适性。模型容量越大，基线缺陷率越低，但增长趋势（alpha）在不同模型间存在差异。</p></div>
   <div class="legend"><span class="note">* GPT-4和DeepSeek-Coder数据为基于基准的预计值；Qwen2.5数据为实证数据（本研究）。</span></div>
 </div>
 <script>
