@@ -13,7 +13,7 @@ body { background: #e8ecf1; font-family: "Microsoft YaHei","Helvetica Neue",Aria
 .toolbar span { color: #666; font-size: 13px; }
 .toolbar button { background: #fff; border: 1px solid #ccc; color: #333; padding: 6px 20px; border-radius: 4px; font-size: 13px; cursor: pointer; }
 .toolbar button:hover { background: #f0f0f0; }
-#canvas { width: 1600px; background: #fff; border: 1px solid #dee2e6; padding: 40px 50px; margin-top: 52px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+#canvas { width: 1200px; background: #fff; border: 1px solid #dee2e6; padding: 24px 28px; margin-top: 52px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
 .title { text-align: center; margin-bottom: 28px; }
 .title h1 { font-size: 22px; color: #222; font-weight: 700; }
 .title .sub { font-size: 13px; color: #666; margin-top: 4px; }
@@ -32,10 +32,10 @@ table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 12px
 th, td { padding: 5px 10px; text-align: center; border-bottom: 1px solid #eee; }
 th { background: #f8f9fa; color: #555; font-weight: 600; font-size: 11px; }
 td { color: #444; }
-.insight { margin-top: 22px; border: 1px solid #dee2e6; border-left: 3px solid #3498db; background: #f8f9fa; padding: 14px 18px; }
+
 .insight h4 { font-size: 13px; color: #333; margin-bottom: 6px; }
 .insight p { font-size: 12px; color: #555; line-height: 1.7; }
-.legend { text-align: center; margin-top: 16px; font-size: 11px; color: #888; }
+
 </style>
 </head>
 <body>
@@ -76,12 +76,8 @@ td { color: #444; }
     </div>
   </div>
   
-  <div class="insight">
-    <h4>核心发现</h4>
-    <p>实验数据确认了LLM代码生成中缺陷密度标度律的存在：缺陷密度随代码规模呈现显著上升趋势（α=0.179>0, p<0.01）。从小规模（23 LOC）到超大规模（165 LOC），平均缺陷密度从7.9/100LOC跃升至13.7/100LOC，增幅达72%。xlarge规模的缺陷密度出现陡增——与前三个规模等级的渐变趋势形成鲜明对比。这个跳变暗示着存在一个"临界规模"阈值，超过该阈值后LLM生成代码的可靠性急剧恶化。这为后续形式化缺陷天花板和组合式正确性研究提供了定量基线和理论motivation。, motivating the need for formal defect ceiling and compositional correctness methods.</p>
-  </div>
-  <div class="legend">实验模型：Qwen2.5-Coder-7B | 广东科技学院
-</div>
+  
+  
 
 <script>
 var data = [{"x":32,"y":8.33,"scene":"traffic_light","scale":"small","label":"TL-S"},{"x":32,"y":8.33,"scene":"traffic_light","scale":"small","label":"TL-S"},{"x":32,"y":8.33,"scene":"traffic_light","scale":"small","label":"TL-S"},{"x":32,"y":8.33,"scene":"traffic_light","scale":"small","label":"TL-S"},{"x":40,"y":7.14,"scene":"traffic_light","scale":"medium","label":"TL-M"},{"x":40,"y":7.14,"scene":"traffic_light","scale":"medium","label":"TL-M"},{"x":40,"y":7.14,"scene":"traffic_light","scale":"medium","label":"TL-M"},{"x":40,"y":7.14,"scene":"traffic_light","scale":"medium","label":"TL-M"},{"x":126,"y":10.30,"scene":"traffic_light","scale":"large","label":"TL-L"},{"x":126,"y":10.30,"scene":"traffic_light","scale":"large","label":"TL-L"},{"x":126,"y":10.30,"scene":"traffic_light","scale":"large","label":"TL-L"},{"x":135,"y":11.73,"scene":"traffic_light","scale":"xlarge","label":"TL-XL"},{"x":135,"y":11.73,"scene":"traffic_light","scale":"xlarge","label":"TL-XL"},{"x":14,"y":7.14,"scene":"conveyor","scale":"small","label":"CV-S"},{"x":14,"y":7.14,"scene":"conveyor","scale":"small","label":"CV-S"},{"x":14,"y":7.14,"scene":"conveyor","scale":"small","label":"CV-S"},{"x":14,"y":7.14,"scene":"conveyor","scale":"small","label":"CV-S"},{"x":44,"y":6.25,"scene":"conveyor","scale":"medium","label":"CV-M"},{"x":44,"y":6.25,"scene":"conveyor","scale":"medium","label":"CV-M"},{"x":44,"y":6.25,"scene":"conveyor","scale":"medium","label":"CV-M"},{"x":44,"y":6.25,"scene":"conveyor","scale":"medium","label":"CV-M"},{"x":80,"y":5.21,"scene":"conveyor","scale":"large","label":"CV-L"},{"x":80,"y":5.21,"scene":"conveyor","scale":"large","label":"CV-L"},{"x":80,"y":5.21,"scene":"conveyor","scale":"large","label":"CV-L"},{"x":151,"y":11.00,"scene":"conveyor","scale":"xlarge","label":"CV-XL"},{"x":151,"y":11.00,"scene":"conveyor","scale":"xlarge","label":"CV-XL"},{"x":22,"y":8.33,"scene":"robot_mutex","scale":"small","label":"RB-S"},{"x":22,"y":8.33,"scene":"robot_mutex","scale":"small","label":"RB-S"},{"x":22,"y":8.33,"scene":"robot_mutex","scale":"small","label":"RB-S"},{"x":22,"y":8.33,"scene":"robot_mutex","scale":"small","label":"RB-S"},{"x":98,"y":6.97,"scene":"robot_mutex","scale":"medium","label":"RB-M"},{"x":98,"y":6.97,"scene":"robot_mutex","scale":"medium","label":"RB-M"},{"x":98,"y":6.97,"scene":"robot_mutex","scale":"medium","label":"RB-M"},{"x":98,"y":6.97,"scene":"robot_mutex","scale":"medium","label":"RB-M"},{"x":141,"y":10.02,"scene":"robot_mutex","scale":"large","label":"RB-L"},{"x":141,"y":10.02,"scene":"robot_mutex","scale":"large","label":"RB-L"},{"x":141,"y":10.02,"scene":"robot_mutex","scale":"large","label":"RB-L"},{"x":208,"y":18.23,"scene":"robot_mutex","scale":"xlarge","label":"RB-XL"},{"x":208,"y":18.23,"scene":"robot_mutex","scale":"xlarge","label":"RB-XL"}];
@@ -135,19 +131,19 @@ new Chart(document.getElementById('scalingChart').getContext('2d'), {
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                labels: { color: '#555', font: { size: 12 }, padding: 16, usePointStyle: true, pointStyleWidth: 8 }
+                labels: { color: '#555', font: { size: 16 }, padding: 16, usePointStyle: true, pointStyleWidth: 8 }
             },
         },
         scales: {
             x: {
-                title: { display: true, text: '代码规模 (LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
-                ticks: { color: '#666', font: { size: 11 }, stepSize: 20 },
+                title: { display: true, text: '代码规模 (LOC)', color: '#333', font: { size: 17, weight: 'bold' } },
+                ticks: { color: '#666', font: { size: 15 }, stepSize: 20 },
                 grid: { color: '#eee', drawBorder: true, lineWidth: 0.5 },
                 min: 0, max: 240,
             },
             y: {
-                title: { display: true, text: '缺陷密度 (/100 LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
-                ticks: { color: '#666', font: { size: 11 } },
+                title: { display: true, text: '缺陷密度 (/100 LOC)', color: '#333', font: { size: 17, weight: 'bold' } },
+                ticks: { color: '#666', font: { size: 15 } },
                 grid: { color: '#eee', drawBorder: true, lineWidth: 0.5 },
                 min: 0,
             }

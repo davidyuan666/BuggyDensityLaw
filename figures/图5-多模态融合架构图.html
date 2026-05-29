@@ -7,40 +7,40 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
 .toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
-.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
-#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.title{text-align:center;margin-bottom:28px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
-.section-label{font-size:11px;color:#999;text-align:center;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
+.toolbar span{color:#666;font-size:17px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:17px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1200px;background:#fff;border:1px solid #dee2e6;padding:24px 28px;margin-top:48px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:18px}.title h1{font-size:34px;color:#222;font-weight:700}.title .sub{font-size:17px;color:#666;margin-top:4px}
+.section-label{font-size:19px;color:#999;text-align:center;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
 .input-row{display:flex;gap:16px;margin-bottom:12px}
 .input-block{flex:1;border:1px solid #dee2e6;border-radius:8px;padding:16px;text-align:center}
-.input-block h4{font-size:13px;color:#333;font-weight:700;margin-bottom:8px}
-.input-block .items{font-size:10px;color:#666;line-height:1.8}
+.input-block h4{font-size:17px;color:#333;font-weight:700;margin-bottom:8px}
+.input-block .items{font-size:14px;color:#666;line-height:1.8}
 .ib1{border-top:3px solid #e74c3c;background:#fdf2f2}
 .ib2{border-top:3px solid #2980b9;background:#f0f7ff}
 .ib3{border-top:3px solid #27ae60;background:#f0fff4}
-.arrow-down-center{text-align:center;color:#bbb;font-size:14px;padding:2px 0}
+.arrow-down-center{text-align:center;color:#bbb;font-size:34px;padding:2px 0}
 .encoder-row{display:flex;gap:16px;margin-bottom:12px}
-.encoder{flex:1;border:1px dashed #dee2e6;border-radius:6px;padding:12px;text-align:center;font-size:11px;background:#fefefe}
-.encoder h4{font-size:12px;color:#444;margin-bottom:4px}
-.encoder p{font-size:10px;color:#888}
+.encoder{flex:1;border:1px dashed #dee2e6;border-radius:6px;padding:12px;text-align:center;font-size:19px;background:#fefefe}
+.encoder h4{font-size:20px;color:#444;margin-bottom:4px}
+.encoder p{font-size:14px;color:#888}
 .enc1{border-color:#e74c3c}.enc1 h4{color:#c0392b}
 .enc2{border-color:#2980b9}.enc2 h4{color:#1a5276}
 .enc3{border-color:#27ae60}.enc3 h4{color:#1e8449}
-.fusion-box{border:2px solid #8e44ad;border-radius:10px;padding:20px 24px;margin:16px 0;background:#faf5ff;text-align:center}
-.fusion-box h3{font-size:15px;color:#6c3483;font-weight:700;margin-bottom:12px}
-.fusion-formula{font-size:13px;color:#6c3483;font-family:"Courier New",monospace;margin-bottom:10px}
-.fusion-formula span{display:inline-block;margin:0 4px;padding:2px 8px;border-radius:3px;background:#eee;color:#555;font-size:11px}
+.fusion-box{border:2px solid #8e44ad;border-radius:10px;padding:12px 14px;margin:16px 0;background:#faf5ff;text-align:center}
+.fusion-box h3{font-size:19px;color:#6c3483;font-weight:700;margin-bottom:12px}
+.fusion-formula{font-size:17px;color:#6c3483;font-family:"Courier New",monospace;margin-bottom:10px}
+.fusion-formula span{display:inline-block;margin:0 4px;padding:2px 8px;border-radius:3px;background:#eee;color:#555;font-size:19px}
 .gate-row{display:flex;gap:16px;margin-top:12px}
-.gate{flex:1;border:1px solid #d2b4de;border-radius:6px;padding:8px;text-align:center;font-size:10px;color:#6c3483;background:#faf5ff}
-.gate strong{display:block;font-size:12px;margin-bottom:4px}
+.gate{flex:1;border:1px solid #d2b4de;border-radius:6px;padding:8px;text-align:center;font-size:14px;color:#6c3483;background:#faf5ff}
+.gate strong{display:block;font-size:20px;margin-bottom:4px}
 .str-box{border:1px solid #dee2e6;border-radius:8px;padding:16px 20px;margin-top:16px;background:#f8f9fa}
-.str-box h3{font-size:14px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
+.str-box h3{font-size:34px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
 .str-fields{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.str-field{background:#fff;border:1px solid #dee2e6;border-radius:4px;padding:8px 14px;font-size:11px;color:#444;white-space:nowrap}
+.str-field{background:#fff;border:1px solid #dee2e6;border-radius:4px;padding:8px 14px;font-size:19px;color:#444;white-space:nowrap}
 .str-field strong{color:#222;margin-right:4px}
 .downstream-row{display:flex;gap:12px;margin-top:16px}
-.down{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:10px;text-align:center;font-size:11px;color:#555;background:#fff}
-.down strong{color:#333;display:block;margin-bottom:4px;font-size:12px}
+.down{flex:1;border:1px solid #dee2e6;border-radius:6px;padding:10px;text-align:center;font-size:19px;color:#555;background:#fff}
+.down strong{color:#333;display:block;margin-bottom:4px;font-size:20px}
 </style>
 </head>
 <body>
@@ -76,7 +76,7 @@ F = g<sub>V</sub> &middot; v &oplus; g<sub>T</sub> &middot; t &oplus; g<sub>K</s
 <div class="gate"><strong>g<sub>T</sub> = &sigma;(W<sub>T</sub>[v;t;k])</strong>文本门控权重<br>控制文本特征贡献度</div>
 <div class="gate"><strong>g<sub>K</sub> = &sigma;(W<sub>K</sub>[v;t;k])</strong>知识门控权重<br>控制知识特征贡献度</div>
 </div>
-<p style="font-size:10px;color:#888;margin-top:10px">其中 &sigma; 为 sigmoid 函数，[v;t;k] 表示拼接操作，&oplus; 为逐元素加权和</p>
+<p style="font-size:14px;color:#888;margin-top:10px">其中 &sigma; 为 sigmoid 函数，[v;t;k] 表示拼接操作，&oplus; 为逐元素加权和</p>
 </div>
 
 <div class="arrow-down-center">&#9660;</div>
@@ -95,7 +95,7 @@ F = g<sub>V</sub> &middot; v &oplus; g<sub>T</sub> &middot; t &oplus; g<sub>K</s
 
 <div class="arrow-down-center">&#9660;</div>
 
-<div style="text-align:center;font-size:11px;color:#999;margin-bottom:8px">&#9670; 下游任务</div>
+<div style="text-align:center;font-size:19px;color:#999;margin-bottom:8px">&#9670; 下游任务</div>
 <div class="downstream-row">
 <div class="down"><strong>代码生成</strong>LLM Agent生成<br>IEC 61131-3 ST代码</div>
 <div class="down"><strong>安全验证</strong>Z3 SMT / NuSMV<br>形式化属性验证</div>

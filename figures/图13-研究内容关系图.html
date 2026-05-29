@@ -7,30 +7,30 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
 .toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
-.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
-#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.main-title{text-align:center;margin-bottom:28px}
-.main-title h1{font-size:22px;color:#222;font-weight:700}
-.main-title .sub{font-size:12px;color:#888;margin-top:6px}
-.layout{display:flex;gap:20px}
+.toolbar span{color:#666;font-size:17px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:17px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1200px;background:#fff;border:1px solid #dee2e6;padding:24px 28px;margin-top:48px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.main-title{text-align:center;margin-bottom:18px}
+.main-title h1{font-size:34px;color:#222;font-weight:700}
+.main-title .sub{font-size:20px;color:#888;margin-top:6px}
+.layout{display:flex;gap:14px}
 .side{width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
-.side h3{font-size:12px;color:#888;text-align:center;margin-bottom:4px;font-weight:600}
-.side-box{border:1px solid #dee2e6;border-radius:6px;padding:10px 12px;background:#fafbfc;font-size:11px;color:#555;text-align:center;line-height:1.6}
+.side h3{font-size:20px;color:#888;text-align:center;margin-bottom:4px;font-weight:600}
+.side-box{border:1px solid #dee2e6;border-radius:6px;padding:10px 12px;background:#fafbfc;font-size:19px;color:#555;text-align:center;line-height:1.6}
 .left .side-box{border-left:3px solid #2980b9}
 .right .side-box{border-left:3px solid #27ae60}
 .center{flex:1;display:flex;flex-direction:column;gap:16px}
-.module{border:2px solid #dee2e6;border-radius:10px;padding:20px 24px;background:#fff;position:relative}
-.module .m-num{position:absolute;top:-14px;left:16px;background:#fff;padding:2px 12px;font-size:12px;font-weight:700;color:#333;border:1px solid #dee2e6;border-radius:10px}
-.module h3{font-size:14px;color:#222;font-weight:700;margin-bottom:6px;text-align:center}
-.module p{font-size:11px;color:#555;line-height:1.6;text-align:center}
+.module{border:2px solid #dee2e6;border-radius:10px;padding:12px 14px;background:#fff;position:relative}
+.module .m-num{position:absolute;top:-14px;left:16px;background:#fff;padding:2px 12px;font-size:20px;font-weight:700;color:#333;border:1px solid #dee2e6;border-radius:10px}
+.module h3{font-size:34px;color:#222;font-weight:700;margin-bottom:6px;text-align:center}
+.module p{font-size:19px;color:#555;line-height:1.6;text-align:center}
 .m1{border-color:#3498db;background:#f0f7ff}.m1 .m-num{background:#3498db;color:#fff;border-color:#3498db}
 .m2{border-color:#e67e22;background:#fef9e7}.m2 .m-num{background:#e67e22;color:#fff;border-color:#e67e22}
 .m3{border-color:#27ae60;background:#f0fff4}.m3 .m-num{background:#27ae60;color:#fff;border-color:#27ae60}
-.connect-arrow{text-align:center;font-size:18px;color:#bbb;padding:0}
+.connect-arrow{text-align:center;font-size:34px;color:#bbb;padding:0}
 .questions{border:1px solid #dee2e6;border-radius:8px;padding:16px 20px;margin-top:16px;background:#fafbfc}
-.questions h3{font-size:14px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
+.questions h3{font-size:34px;color:#333;font-weight:700;text-align:center;margin-bottom:12px}
 .questions-row{display:flex;gap:12px}
-.qq{flex:1;border:1px dashed #e74c3c;border-radius:6px;padding:10px 14px;background:#fdf2f2;text-align:center;font-size:11px;color:#c0392b;line-height:1.5;font-weight:600}
+.qq{flex:1;border:1px dashed #e74c3c;border-radius:6px;padding:6px 10px;background:#fdf2f2;text-align:center;font-size:19px;color:#c0392b;line-height:1.5;font-weight:600}
 </style>
 </head>
 <body>
