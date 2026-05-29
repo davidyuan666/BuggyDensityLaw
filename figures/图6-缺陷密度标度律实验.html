@@ -47,8 +47,8 @@ td { color: #444; }
 
 <div id="canvas">
   <div class="title">
-    <h1>LLM Code Generation Defect Density Scaling Law: Empirical Validation</h1>
-    <div class="sub">3 industrial control scenarios &times; 4 scale levels &times; multiple repeats = 39 independent experiments</div>
+    <h1>LLM代码生成缺陷密度标度律：实证验证</h1>
+    <div class="sub">3种工业控制场景 × 4个规模等级 × 多次重复 = 39次独立实验</div>
   </div>
   
   <div class="content">
@@ -57,9 +57,9 @@ td { color: #444; }
     </div>
     <div class="stats-area">
       <div class="stat-card">
-        <h3>Power-Law Fit</h3>
+        <h3>幂律拟合结果</h3>
         <div><span class="val">0.179</span><span class="unit">alpha</span></div>
-        <div class="eq">DD = 3.986 &middot; LOC<sup>0.179</sup></div>
+        <div class="eq">
         <div class="ci">95% CI: [0.083, 0.274] &nbsp; R<sup>2</sup> = 0.266</div>
         <div class="desc">N = 39, p &lt; 0.01</div>
       </div>
@@ -77,10 +77,10 @@ td { color: #444; }
   </div>
   
   <div class="insight">
-    <h4>Key Finding</h4>
-    <p>Experimental data confirms the existence of a defect density scaling law in LLM code generation: defect density increases significantly with code size (alpha = 0.179 &gt; 0, p &lt; 0.01). From small (23 LOC) to xlarge (165 LOC), average defect density rises from 7.9 to 13.7 per 100 LOC &mdash; a 72% increase. The sharp jump at xlarge scale suggests a "critical threshold" beyond which LLM-generated code reliability deteriorates rapidly, motivating the need for formal defect ceiling and compositional correctness methods.</p>
+    <h4>核心发现</h4>
+    <p>实验数据确认了LLM代码生成中缺陷密度标度律的存在：缺陷密度随代码规模呈现显著上升趋势（α=0.179>0, p<0.01）。从小规模（23 LOC）到超大规模（165 LOC），平均缺陷密度从7.9/100LOC跃升至13.7/100LOC，增幅达72%。xlarge规模的缺陷密度出现陡增——与前三个规模等级的渐变趋势形成鲜明对比。这个跳变暗示着存在一个"临界规模"阈值，超过该阈值后LLM生成代码的可靠性急剧恶化。这为后续形式化缺陷天花板和组合式正确性研究提供了定量基线和理论motivation。, motivating the need for formal defect ceiling and compositional correctness methods.</p>
   </div>
-  <div class="legend">Generated with Qwen2.5-Coder-7B | Guangdong University of Science and Technology</div>
+  <div class="legend">实验模型：Qwen2.5-Coder-7B | 广东科技学院
 </div>
 
 <script>
@@ -88,7 +88,7 @@ var data = [{"x":32,"y":8.33,"scene":"traffic_light","scale":"small","label":"TL
 
 var sceneColors = {'traffic_light': 'rgba(52,152,219,0.7)', 'conveyor': 'rgba(39,174,96,0.7)', 'robot_mutex': 'rgba(230,126,34,0.7)'};
 var sceneBorders = {'traffic_light': '#2471a3', 'conveyor': '#1e8449', 'robot_mutex': '#ba4a00'};
-var sceneLabels = {'traffic_light': 'Traffic Light', 'conveyor': 'Conveyor Sorting', 'robot_mutex': 'Robot Mutex'};
+var sceneLabels = {'traffic_light': '交通灯', 'conveyor': '传送带', 'robot_mutex': '机器人'};
 
 var sceneGroups = {};
 data.forEach(function(p) {
@@ -116,7 +116,7 @@ for (var x = minX; x <= maxX; x += 1) {
     fitPoints.push({x: x, y: c_fit * Math.pow(x, a_fit)});
 }
 datasets.push({
-    label: 'Fitted: DD = 3.986\u00b7LOC^0.179',
+    label: '拟合曲线: DD = 3.986·LOC^0.179
     data: fitPoints,
     type: 'line',
     borderColor: '#e74c3c',
@@ -140,13 +140,13 @@ new Chart(document.getElementById('scalingChart').getContext('2d'), {
         },
         scales: {
             x: {
-                title: { display: true, text: 'Code Size (LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
+                title: { display: true, text: '代码规模 (LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
                 ticks: { color: '#666', font: { size: 11 }, stepSize: 20 },
                 grid: { color: '#eee', drawBorder: true, lineWidth: 0.5 },
                 min: 0, max: 240,
             },
             y: {
-                title: { display: true, text: 'Defect Density (/100 LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
+                title: { display: true, text: '缺陷密度 (/100 LOC)', color: '#333', font: { size: 13, weight: 'bold' } },
                 ticks: { color: '#666', font: { size: 11 } },
                 grid: { color: '#eee', drawBorder: true, lineWidth: 0.5 },
                 min: 0,

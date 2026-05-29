@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 9: Error Chain Accumulation & Dense Verification</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:28px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
+.row{display:flex;gap:40px;align-items:flex-start;margin-bottom:30px}
+.row-label{width:60px;text-align:right;font-size:13px;color:#888;padding-top:22px;flex-shrink:0}
+.chain{flex:1}
+.chain-title{font-size:14px;color:#222;font-weight:700;margin-bottom:10px}
+.chain-sub{font-size:12px;color:#666;margin-bottom:14px}
+.steps{display:flex;align-items:center;gap:4px;margin-bottom:8px}
+.step{width:48px;height:48px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600;position:relative}
+.step-bad{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+.step-ok{background:#3498db}
+.step-verify{background:#27ae60;border:2px solid #1e8449;width:54px;height:54px;font-size:10px;text-align:center;line-height:1.2}
+.arrow{color:#bbb;font-size:16px;margin:0 4px}
+.formula-box{background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:12px 16px;margin-top:10px;font-family:"Courier New",monospace;font-size:13px;color:#333}
+.formula-box .red{color:#e74c3c;font-weight:700}
+.formula-box .green{color:#27ae60;font-weight:700}
+.formula-box .blue{color:#3498db;font-weight:700}
+.divider{border-top:2px dashed #dee2e6;margin:30px 0}
+.insight{margin-top:12px;border:1px solid #dee2e6;border-left:3px solid #e74c3c;background:#f8f9fa;padding:14px 18px}
+.insight h4{font-size:13px;color:#333;margin-bottom:6px}.insight p{font-size:12px;color:#555;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>Figure 9: Error Chain Accumulation &amp; Dense Verification Mechanism</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div id="canvas">
+  <div class="title"><h1>Why Defect Density Scales: Error Chain Accumulation in Autoregressive Generation</h1><div class="sub">Top: Unverified autoregressive chain (BES Theorem 4.4a) &nbsp;|&nbsp; Bottom: Dense verification breaks the chain (BES Theorem 4.5)</div></div>
+
+  <!-- Top: Unverified -->
+  <div class="row">
+    <div class="row-label">(a)<br>Unverified<br>Chain</div>
+    <div class="chain">
+      <div class="chain-title">Monolithic Autoregressive Generation (Expansion-Only Search)</div>
+      <div class="chain-sub">Each step conditions on previous steps; errors compound exponentially along the chain.</div>
+      <div class="steps">
+        <div class="step step-bad">Step 1<br>&epsilon;</div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">Step 2<br>&epsilon;<sup>2</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">Step 3<br>&epsilon;<sup>3</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">Step 4<br>&epsilon;<sup>4</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">...<br></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">Step N<br>&epsilon;<sup>N</sup></div>
+      </div>
+      <div class="formula-box">P<sub>correct</sub> = <span class="red">&#928;</span> P(correct<sub>i</sub> | correct<sub>1..i-1</sub>) <span class="red">&#8776; exp(-</span><span class="red">&epsilon;N</span><span class="red">)</span> &rarr; 0</div>
+      <div style="font-size:11px;color:#e74c3c;margin-top:6px;"><strong>BES Theorem 4.4a (Shell Confinement):</strong> All expansion-only candidates confined to narrow entropy shell of size exp(H<sub>T</sub>+&epsilon;T). Expected defect count E[bugs] &asymp; &epsilon;N&middot;(1+O(N)) grows <strong>super-linearly</strong>.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Bottom: Dense Verification -->
+  <div class="row">
+    <div class="row-label">(b)<br>Dense<br>Verification</div>
+    <div class="chain">
+      <div class="chain-title">Dense Verification Breaks the Error Chain (Bidirectional Search)</div>
+      <div class="chain-sub">Insert k verification points; each resets the error accumulation. Defect rate becomes O(&epsilon;&middot;N/k) per sub-chain.</div>
+      <div class="steps">
+        <div class="step step-ok">Gen<br>1..n</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">VERIFY<br>Z3</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">Gen<br>n+1..2n</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">VERIFY<br>NuSMV</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">Gen<br>...</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">VERIFY<br>Assert</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">Gen<br>..N</div>
+      </div>
+      <div class="formula-box">P<sub>correct</sub> = <span class="green">&#928;</span> P(correct on subchain<sub>j</sub>) <span class="green">&#8776; exp(-</span><span class="green">&epsilon;&middot;N/k</span><span class="green">)</span><sup>k</sup> = <span class="green">exp(-&epsilon;N)</span> &rarr; <strong>linear</strong> in N</div>
+      <div style="font-size:11px;color:#27ae60;margin-top:6px;"><strong>BES Theorem 4.5 (Exponential Advantage):</strong> Backward-guided search reduces required samples from &Omega;(1/&#928;p<sub>i</sub>) to O(p<sup>-1</sup><sub>min</sub>log(m)). Monolithic/compositional ratio = &Omega;(p<sup>-(m-1)</sup>/log m) &mdash; <strong>exponential</strong> in sub-goal count m.</div>
+    </div>
+  </div>
+
+  <div class="insight"><h4>Mechanism Summary: From Empirical Observation to Causal Explanation</h4>
+    <p>This figure reveals the causal mechanism behind the defect density scaling law: (a) In autoregressive generation <strong>without</strong> intermediate verification, error probability compounds along the token chain, yielding N<sub>bugs</sub> &prop; N<sup>1+&alpha;</sup> and explaining the super-linear trend. (b) Inserting k dense verification points <strong>breaks</strong> the error chain into k independent sub-chains, reducing the asymptotic growth of expected defects from super-linear to linear in N. This mechanism underpins our "Formal Defect Ceiling" approach (Research Content 2) and "Compositional Correctness" strategy (Research Content 3).</p></div>
+</div>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure9-ErrorChain-DenseVerification.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+</body>
+</html>

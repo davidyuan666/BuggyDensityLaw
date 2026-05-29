@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 12: Research Framework Overview</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid #dee2e6;display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.toolbar span{color:#666;font-size:13px}.toolbar button{background:#fff;border:1px solid #ccc;color:#333;padding:6px 20px;border-radius:4px;font-size:13px;cursor:pointer}.toolbar button:hover{background:#f0f0f0}
+#canvas{width:1600px;background:#fff;border:1px solid #dee2e6;padding:40px 50px;margin-top:52px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.title{text-align:center;margin-bottom:32px}.title h1{font-size:22px;color:#222;font-weight:700}.title .sub{font-size:13px;color:#666;margin-top:4px}
+.framework{display:flex;flex-direction:column;gap:0}
+.layer{display:flex;gap:0;align-items:stretch;margin-bottom:8px}
+.layer-label{width:130px;display:flex;align-items:center;justify-content:flex-end;padding-right:16px;font-size:13px;color:#888;font-weight:600;flex-shrink:0}
+.layer-boxes{display:flex;gap:12px;flex:1}
+.box{border-radius:6px;padding:14px 18px;text-align:center;flex:1;border:1px solid #dee2e6}
+.box h4{font-size:13px;margin-bottom:4px;font-weight:700}
+.box p{font-size:11px;color:#555;line-height:1.5}
+.box-q{background:#f8f9fa;border-left:3px solid #e74c3c}.box-q h4{color:#c0392b}
+.box-r{background:#f0f7ff;border-left:3px solid #3498db}.box-r h4{color:#2471a3}
+.box-i{background:#f0fff4;border-left:3px solid #27ae60}.box-i h4{color:#1e8449}
+.box-e{background:#fffdf0;border-left:3px solid #e67e22}.box-e h4{color:#ba4a00}
+.arrow-row{display:flex;justify-content:center;padding:4px 0;margin-left:130px}
+.arrow-row span{color:#bbb;font-size:16px}
+.conn{text-align:center;font-size:11px;color:#999;margin-bottom:4px}
+.insight{margin-top:24px;border:1px solid #dee2e6;border-left:3px solid #3498db;background:#f8f9fa;padding:14px 18px}
+.insight h4{font-size:13px;color:#333;margin-bottom:6px}.insight p{font-size:12px;color:#555;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>Figure 12: Research Framework Overview</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div id="canvas">
+  <div class="title"><h1>Research Framework: From Scientific Problem to Method Validation</h1><div class="sub">A three-layer progression: Core Problem &rarr; Research Content &rarr; Innovation & Validation</div></div>
+  <div class="framework">
+    <!-- Layer 1: Core Scientific Problem -->
+    <div class="conn">LAYER 1 &mdash; Core Scientific Problem</div>
+    <div class="layer"><div class="layer-label">Scientific<br>Problem</div><div class="layer-boxes">
+      <div class="box box-q"><h4>Defect Density Scaling Law in LLM Code Generation</h4><p>DeffectDensity &#8733; LOC<sup>&alpha;</sup>, &alpha;&gt;0. How to break this malignant scaling?</p></div>
+    </div></div>
+    <div class="arrow-row"><span>&#9660;</span></div>
+    <!-- Layer 2: Three Research Contents -->
+    <div class="conn">LAYER 2 &mdash; Three Research Contents</div>
+    <div class="layer"><div class="layer-label">Research<br>Content</div><div class="layer-boxes">
+      <div class="box box-r"><h4>RC 1: Empirical Scaling Law</h4><p>Multi-scale benchmark<br>Cross-LLM comparison<br>Estimate &alpha;, c, N<sub>crit</sub><br><i>Fig 6, 8</i></p></div>
+      <div class="box box-r"><h4>RC 2: Formal Defect Ceiling</h4><p>Z3/NuSMV integration<br>Verification complexity scaling<br>Safety & Liveness properties<br><i>Fig 7, 11</i></p></div>
+      <div class="box box-r"><h4>RC 3: Compositional Breakthrough</h4><p>G-MAF task decomposition<br>Assume-Guarantee verification<br>Compositional correctness<br><i>Fig 9, 10</i></p></div>
+    </div></div>
+    <div class="arrow-row"><span>&#9660;</span></div>
+    <!-- Layer 3: Innovation & Validation -->
+    <div class="conn">LAYER 3 &mdash; Innovation Points &amp; Empirical Validation</div>
+    <div class="layer"><div class="layer-label">Innovation<br>&amp; Validation</div><div class="layer-boxes">
+      <div class="box box-i"><h4>Innovation 1</h4><p>First systematic scaling law model for LLM code gen<br><strong>Validated:</strong> &alpha;=0.179 (exp.)</p></div>
+      <div class="box box-i"><h4>Innovation 2</h4><p>"Formal Defect Ceiling" concept<br><strong>Validated:</strong> +47% safety gain (exp.)</p></div>
+      <div class="box box-i"><h4>Innovation 3</h4><p>Compositional correctness breaks scaling<br><strong>Theoretical:</strong> &Omega;(p<sup>-(m-1)</sup>) advantage</p></div>
+    </div></div>
+    <div class="arrow-row"><span>&#9660;</span></div>
+    <div class="conn">OUTCOME</div>
+    <div class="layer"><div class="layer-label">Expected<br>Outcomes</div><div class="layer-boxes">
+      <div class="box box-e"><h4>2 High-Quality Papers</h4><p>Target: IEEE TSE, ASE,<br>ACM TOSEM, JSS</p></div>
+      <div class="box box-e"><h4>1 Invention Patent</h4><p>Compositional code generation<br>with formal verification</p></div>
+      <div class="box box-e"><h4>1-2 Graduate Students</h4><p>Training in SE+AI<br>cross-disciplinary research</p></div>
+    </div></div>
+  </div>
+  <div class="insight"><h4>Framework Logic</h4>
+    <p>This three-layer framework organizes the project into a logical progression: from a single, well-defined scientific problem (defect density scaling law), through three complementary research approaches (empirical characterization, formal ceiling, compositional breakthrough), to three targeted innovation contributions, each supported by specific experimental validation. The framework ensures research coherence while maintaining methodological rigor across the quantitative (RC1), formal (RC2), and algorithmic (RC3) dimensions.</p></div>
+</div>
+<script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure12-ResearchFramework.png';l.href=c.toDataURL('image/png');l.click()})}</script>
+</body>
+</html>

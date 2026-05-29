@@ -71,10 +71,18 @@ python analysis.py
 
 ## 图表 / Figures
 
-Open in browser → Download PNG (2x resolution, suitable for academic papers):
+浏览器打开 → 下载PNG（2x，适合学术论文插图）：
 
-- `figures/图6-缺陷密度标度律实验.html` — Scatter plot + power-law fit
-- `figures/图7-形式化缺陷天花板效应.html` — Before/after verification bar chart
+| 图号 | 文件 | 内容 |
+|------|------|------|
+| 图6 | `figures/图6-缺陷密度标度律实验.html` | 散点图+幂律拟合曲线（α=0.179, p<0.01） |
+| 图7 | `figures/图7-形式化缺陷天花板效应.html` | 验证前后安全属性通过率对比（+47%增益） |
+| 图8 | `figures/图8-多LLM缺陷标度对比.html` | GPT-4/DeepSeek-Coder/Qwen跨模型标度律对比 |
+| 图9 | `figures/图9-误差链累积与密集验证断链.html` | 自回归误差链累积机制与密集验证断链效应（BES Theorem 4.4a/4.5） |
+| 图10 | `figures/图10-组合式vs单体缺陷密度对比.html` | 组合式正确性 vs 单体生成的指数级优势 |
+| 图11 | `figures/图11-验证复杂度标度律.html` | Z3/NuSMV求解时间 vs LOC和属性数量的标度律 |
+| 图12 | `figures/图12-研究框架全景图.html` | 科学问题→研究内容→创新点三层框架全景 |
+| 图13 | `figures/图13-实验设计概览.html` | 3场景×4规模×验证管道的实验设计总览 |
 
 ---
 

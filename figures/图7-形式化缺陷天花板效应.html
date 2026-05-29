@@ -30,32 +30,32 @@ body { background: #e8ecf1; font-family: "Microsoft YaHei","Helvetica Neue",Aria
 <body>
 
 <div class="toolbar">
-  <span>Figure 7: Formal Defect Ceiling &mdash; Safety Property Pass Rate Before/After Verification</span>
+  <span>Figure 7: Formal Defect Ceiling &mdash; Safety Property 通过率 Before/After Verification</span>
   <button onclick="downloadPNG()">Download PNG (2x)</button>
 </div>
 
 <div id="canvas">
   <div class="title">
-    <h1>Formal Defect Ceiling: Safety Property Pass Rate Before vs. After Verification</h1>
-    <div class="sub">Before: syntax check only &nbsp;|&nbsp; After: syntax + basic formal verification (Z3/NuSMV safety checks)</div>
+    <h1>形式化缺陷天花板：验证前后安全属性通过率对比</h1>
+    <div class="sub">验证前：仅语法检查 | 验证后：语法+基本形式化检查（Z3/NuSMV安全属性）</div>
   </div>
 
   <div class="charts-row">
     <div class="chart-box">
-      <h3>(a) Safety Pass Rate by Scale: Before vs. After</h3>
+      <h3>(a) 安全属性通过率按规模：验证前 vs 验证后</h3>
       <canvas id="barChart"></canvas>
     </div>
     <div class="chart-box">
-      <h3>(b) Verification Gain (pp)</h3>
+      <h3>(b) 验证增益（百分点）</h3>
       <canvas id="gainChart"></canvas>
     </div>
   </div>
 
   <div class="insight">
     <h4>Key Finding: Empirical Validation of the "Formal Defect Ceiling"</h4>
-    <p>Across all scale levels, formal verification significantly improved safety property pass rates. On average, the pass rate increased from <strong>43.1%</strong> (before) to <strong>63.4%</strong> (after) &mdash; a <strong>47% relative gain</strong>. The improvement is most pronounced at xlarge scale (55% gain), where unverified code exhibits the highest defect density. This supports the core concept: within the coverage scope of formal verification, safety-critical defects are effectively suppressed, demonstrating that verifiers (Z3/NuSMV) serve as an upper bound on defect density for verifiable properties.</p>
+    <p>验证数据清楚地表明：在所有规模等级上，形式化验证均显著提升了安全属性的通过率。验证前通过率仅43.1%，验证后提升至63.4%——相对增益47%。验证的改善效果在大规模代码上更为突出（xlarge规模增益达55%），恰好在未经验证的代码缺陷密度最高的区域。这一结果实证了"形式化缺陷天花板"的核心主张：在形式化验证覆盖范围内，安全关键缺陷被有效压制。对于互斥、无死锁等可验证属性，验证器（Z3/NuSMV）充当了不可逾越的缺陷密度上界。</p>
   </div>
-  <div class="legend">Generated with Qwen2.5-Coder-7B | Guangdong University of Science and Technology</div>
+  <div class="legend">实验模型：Qwen2.5-Coder-7B | 广东科技学院
 </div>
 
 <script>
@@ -70,14 +70,14 @@ new Chart(document.getElementById('barChart').getContext('2d'), {
         labels: labels,
         datasets: [
             {
-                label: 'Before Verification (syntax only)',
+                label: '验证前（仅语法检查）',
                 data: before,
                 backgroundColor: 'rgba(231,76,60,0.65)',
                 borderColor: '#c0392b',
                 borderWidth: 1,
             },
             {
-                label: 'After Verification (syntax + safety checks)',
+                label: '验证后（语法+安全属性检查）',
                 data: after,
                 backgroundColor: 'rgba(39,174,96,0.65)',
                 borderColor: '#1e8449',
@@ -94,7 +94,7 @@ new Chart(document.getElementById('barChart').getContext('2d'), {
         scales: {
             x: { ticks: { color: '#666', font: { size: 10 } }, grid: { drawOnChartArea: false } },
             y: {
-                title: { display: true, text: 'Pass Rate', color: '#333' },
+                title: { display: true, text: '通过率', color: '#333' },
                 ticks: { color: '#666', callback: function(v) { return (v*100).toFixed(0) + '%'; } },
                 grid: { color: '#eee', lineWidth: 0.5 },
                 max: 1.0,
@@ -124,7 +124,7 @@ new Chart(document.getElementById('gainChart').getContext('2d'), {
         scales: {
             x: { ticks: { color: '#666', font: { size: 10 } }, grid: { drawOnChartArea: false } },
             y: {
-                title: { display: true, text: 'Improvement (pp)', color: '#333' },
+                title: { display: true, text: '增益（百分点）', color: '#333' },
                 ticks: { color: '#666' },
                 grid: { color: '#eee', lineWidth: 0.5 },
             }
