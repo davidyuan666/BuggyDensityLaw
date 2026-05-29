@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 9: Error Chain Accumulation & Dense Verification</title>
+<title>图9：误差链累积与密集验证</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
@@ -31,26 +31,26 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 9: Error Chain Accumulation &amp; Dense Verification Mechanism</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图9：误差链累积与密集验证断链机制</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Why Defect Density Scales: Error Chain Accumulation in Autoregressive Generation</h1><div class="sub">Top: Unverified autoregressive chain (BES Theorem 4.4a) &nbsp;|&nbsp; Bottom: Dense verification breaks the chain (BES Theorem 4.5)</div></div>
+  <div class="title"><h1>缺陷密度标度律的因果机制：自回归生成中的误差链累积</h1><div class="sub">上方：无验证的自回归链（BES定理4.4a：熵壳禁锢） &nbsp;|&nbsp; 下方：密集验证断链（BES定理4.5：指数级效率优势）</div></div>
 
   <!-- Top: Unverified -->
   <div class="row">
-    <div class="row-label">(a)<br>Unverified<br>Chain</div>
+    <div class="row-label">(a)<br>无验证<br>自回归链</div>
     <div class="chain">
-      <div class="chain-title">Monolithic Autoregressive Generation (Expansion-Only Search)</div>
-      <div class="chain-sub">Each step conditions on previous steps; errors compound exponentially along the chain.</div>
+      <div class="chain-title">单体自回归生成（仅扩展搜索）</div>
+      <div class="chain-sub">每一步以前序为条件；误差沿链呈指数级累积，构成了熵壳禁锢定理的直观解释。</div>
       <div class="steps">
-        <div class="step step-bad">Step 1<br>&epsilon;</div><span class="arrow">&#8594;</span>
-        <div class="step step-bad">Step 2<br>&epsilon;<sup>2</sup></div><span class="arrow">&#8594;</span>
-        <div class="step step-bad">Step 3<br>&epsilon;<sup>3</sup></div><span class="arrow">&#8594;</span>
-        <div class="step step-bad">Step 4<br>&epsilon;<sup>4</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">第1步<br>&epsilon;</div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">第2步<br>&epsilon;<sup>2</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">第3步<br>&epsilon;<sup>3</sup></div><span class="arrow">&#8594;</span>
+        <div class="step step-bad">第4步<br>&epsilon;<sup>4</sup></div><span class="arrow">&#8594;</span>
         <div class="step step-bad">...<br></div><span class="arrow">&#8594;</span>
-        <div class="step step-bad">Step N<br>&epsilon;<sup>N</sup></div>
+        <div class="step step-bad">第N步<br>&epsilon;<sup>N</sup></div>
       </div>
       <div class="formula-box">P<sub>correct</sub> = <span class="red">&#928;</span> P(correct<sub>i</sub> | correct<sub>1..i-1</sub>) <span class="red">&#8776; exp(-</span><span class="red">&epsilon;N</span><span class="red">)</span> &rarr; 0</div>
-      <div style="font-size:11px;color:#e74c3c;margin-top:6px;"><strong>BES Theorem 4.4a (Shell Confinement):</strong> All expansion-only candidates confined to narrow entropy shell of size exp(H<sub>T</sub>+&epsilon;T). Expected defect count E[bugs] &asymp; &epsilon;N&middot;(1+O(N)) grows <strong>super-linearly</strong>.</div>
+      <div style="font-size:11px;color:#e74c3c;margin-top:6px;"><strong>BES定理4.4a（熵壳禁锢）：</strong> 仅靠扩展搜索产生的所有候选被限制在宽度仅为exp(H_T+εT)的狭窄熵壳内 of size exp(H<sub>T</sub>+&epsilon;T). 期望缺陷数E[bugs] &asymp; &epsilon;N&middot;(1+O(N)) 呈<strong>超线性</strong>增长。</div>
     </div>
   </div>
 
@@ -58,26 +58,26 @@
 
   <!-- Bottom: Dense Verification -->
   <div class="row">
-    <div class="row-label">(b)<br>Dense<br>Verification</div>
+    <div class="row-label">(b)<br>密集验证<br>断链</div>
     <div class="chain">
-      <div class="chain-title">Dense Verification Breaks the Error Chain (Bidirectional Search)</div>
-      <div class="chain-sub">Insert k verification points; each resets the error accumulation. Defect rate becomes O(&epsilon;&middot;N/k) per sub-chain.</div>
+      <div class="chain-title">密集验证断链（双向搜索）</div>
+      <div class="chain-sub">插入k个密集验证点，每个点处将前面子链条的误差累积"清零"——超线性增长被截断为线性。 Defect rate becomes O(&epsilon;&middot;N/k) per sub-chain.</div>
       <div class="steps">
-        <div class="step step-ok">Gen<br>1..n</div><span class="arrow">&#8594;</span>
-        <div class="step step-verify">VERIFY<br>Z3</div><span class="arrow">&#8594;</span>
-        <div class="step step-ok">Gen<br>n+1..2n</div><span class="arrow">&#8594;</span>
-        <div class="step step-verify">VERIFY<br>NuSMV</div><span class="arrow">&#8594;</span>
-        <div class="step step-ok">Gen<br>...</div><span class="arrow">&#8594;</span>
-        <div class="step step-verify">VERIFY<br>Assert</div><span class="arrow">&#8594;</span>
-        <div class="step step-ok">Gen<br>..N</div>
+        <div class="step step-ok">生成<br>1..n</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">Z3<br>验证</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">生成<br>n+1..2n</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">NuSMV<br>验证</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">生成<br>...</div><span class="arrow">&#8594;</span>
+        <div class="step step-verify">断言<br>检查</div><span class="arrow">&#8594;</span>
+        <div class="step step-ok">生成<br>..N</div>
       </div>
       <div class="formula-box">P<sub>correct</sub> = <span class="green">&#928;</span> P(correct on subchain<sub>j</sub>) <span class="green">&#8776; exp(-</span><span class="green">&epsilon;&middot;N/k</span><span class="green">)</span><sup>k</sup> = <span class="green">exp(-&epsilon;N)</span> &rarr; <strong>linear</strong> in N</div>
-      <div style="font-size:11px;color:#27ae60;margin-top:6px;"><strong>BES Theorem 4.5 (Exponential Advantage):</strong> Backward-guided search reduces required samples from &Omega;(1/&#928;p<sub>i</sub>) to O(p<sup>-1</sup><sub>min</sub>log(m)). Monolithic/compositional ratio = &Omega;(p<sup>-(m-1)</sup>/log m) &mdash; <strong>exponential</strong> in sub-goal count m.</div>
+      <div style="font-size:11px;color:#27ae60;margin-top:6px;"><strong>BES定理4.5（指数级优势）：</strong> 后向分解引导的搜索将所需样本数从Ω(1/Πp_i)指数级压缩到O(p^{-1}_{min} log(m/δ)) from &Omega;(1/&#928;p<sub>i</sub>) to O(p<sup>-1</sup><sub>min</sub>log(m)). 单体/组合式搜索的比值 = &Omega;(p<sup>-(m-1)</sup>/log m) &mdash; <strong>exponential</strong> in sub-goal count m.</div>
     </div>
   </div>
 
-  <div class="insight"><h4>Mechanism Summary: From Empirical Observation to Causal Explanation</h4>
-    <p>This figure reveals the causal mechanism behind the defect density scaling law: (a) In autoregressive generation <strong>without</strong> intermediate verification, error probability compounds along the token chain, yielding N<sub>bugs</sub> &prop; N<sup>1+&alpha;</sup> and explaining the super-linear trend. (b) Inserting k dense verification points <strong>breaks</strong> the error chain into k independent sub-chains, reducing the asymptotic growth of expected defects from super-linear to linear in N. This mechanism underpins our "Formal Defect Ceiling" approach (Research Content 2) and "Compositional Correctness" strategy (Research Content 3).</p></div>
+  <div class="insight"><h4>机制总结：从经验观察到因果解释</h4>
+    <p>这张图揭示了缺陷密度标度律背后的因果链条：(a) 无中间验证的自回归生成中，单步错误概率累积形成超线性增长，解释了标度律存在的机制根因；(b) 插入k个密集验证点将误差链截断为k个独立子段，使期望缺陷的渐近增长从超线性降为线性。这一机制同时支撑了"形式化缺陷天花板"（研究内容二）和"组合式正确性"（研究内容三）两条路径。</p></div>
 </div>
 <script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure9-ErrorChain-DenseVerification.png';l.href=c.toDataURL('image/png');l.click()})}</script>
 </body>

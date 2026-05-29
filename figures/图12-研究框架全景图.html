@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 12: Research Framework Overview</title>
+<title>图12：研究框架全景图</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
@@ -29,37 +29,37 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 12: Research Framework Overview</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图12：研究框架全景图</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Research Framework: From Scientific Problem to Method Validation</h1><div class="sub">A three-layer progression: Core Problem &rarr; Research Content &rarr; Innovation & Validation</div></div>
+  <div class="title"><h1>研究框架：从科学问题到方法验证</h1><div class="sub">三层递进：核心问题 &rarr; 研究内容 &rarr; Innovation & Validation</div></div>
   <div class="framework">
-    <!-- Layer 1: Core Scientific Problem -->
-    <div class="conn">LAYER 1 &mdash; Core Scientific Problem</div>
-    <div class="layer"><div class="layer-label">Scientific<br>Problem</div><div class="layer-boxes">
-      <div class="box box-q"><h4>Defect Density Scaling Law in LLM Code Generation</h4><p>DeffectDensity &#8733; LOC<sup>&alpha;</sup>, &alpha;&gt;0. How to break this malignant scaling?</p></div>
+    <!-- Layer 1: 核心科学问题 -->
+    <div class="conn">第一层 &mdash; 核心科学问题</div>
+    <div class="layer"><div class="layer-label">科学<br>问题</div><div class="layer-boxes">
+      <div class="box box-q"><h4>LLM代码生成缺陷密度标度律</h4><p>DeffectDensity &#8733; LOC<sup>&alpha;</sup>, &alpha;&gt;0. 如何打破这条恶性标度律？</p></div>
     </div></div>
     <div class="arrow-row"><span>&#9660;</span></div>
-    <!-- Layer 2: Three Research Contents -->
-    <div class="conn">LAYER 2 &mdash; Three Research Contents</div>
-    <div class="layer"><div class="layer-label">Research<br>Content</div><div class="layer-boxes">
-      <div class="box box-r"><h4>RC 1: Empirical Scaling Law</h4><p>Multi-scale benchmark<br>Cross-LLM comparison<br>Estimate &alpha;, c, N<sub>crit</sub><br><i>Fig 6, 8</i></p></div>
-      <div class="box box-r"><h4>RC 2: Formal Defect Ceiling</h4><p>Z3/NuSMV integration<br>Verification complexity scaling<br>Safety & Liveness properties<br><i>Fig 7, 11</i></p></div>
-      <div class="box box-r"><h4>RC 3: Compositional Breakthrough</h4><p>G-MAF task decomposition<br>Assume-Guarantee verification<br>Compositional correctness<br><i>Fig 9, 10</i></p></div>
+    <!-- Layer 2: Three 研究内容s -->
+    <div class="conn">第二层 &mdash; Three 研究内容s</div>
+    <div class="layer"><div class="layer-label">研究<br>内容</div><div class="layer-boxes">
+      <div class="box box-r"><h4>研究内容1：标度律实证<br>多尺度基准建立<br>跨LLM对比实验<br>估计参数&alpha;, c, N<sub>crit</sub><br>对应图6, 8</p></div>
+      <div class="box box-r"><h4>研究内容2：形式化天花板<br>Z3/NuSMV Agent集成<br>验证复杂度标度分析<br>Safety &amp; Liveness属性<br>对应图7, 11</p></div>
+      <div class="box box-r"><h4>研究内容3：组合式突破<br>G-MAF任务分解<br>Assume-Guarantee验证<br>组合式正确性保障<br>对应图9, 10</p></div>
     </div></div>
     <div class="arrow-row"><span>&#9660;</span></div>
     <!-- Layer 3: Innovation & Validation -->
-    <div class="conn">LAYER 3 &mdash; Innovation Points &amp; Empirical Validation</div>
-    <div class="layer"><div class="layer-label">Innovation<br>&amp; Validation</div><div class="layer-boxes">
+    <div class="conn">第三层 &mdash; 创新点与实证验证</div>
+    <div class="layer"><div class="layer-label">Innovation<br>与实证验证</div><div class="layer-boxes">
       <div class="box box-i"><h4>Innovation 1</h4><p>First systematic scaling law model for LLM code gen<br><strong>Validated:</strong> &alpha;=0.179 (exp.)</p></div>
       <div class="box box-i"><h4>Innovation 2</h4><p>"Formal Defect Ceiling" concept<br><strong>Validated:</strong> +47% safety gain (exp.)</p></div>
       <div class="box box-i"><h4>Innovation 3</h4><p>Compositional correctness breaks scaling<br><strong>Theoretical:</strong> &Omega;(p<sup>-(m-1)</sup>) advantage</p></div>
     </div></div>
     <div class="arrow-row"><span>&#9660;</span></div>
-    <div class="conn">OUTCOME</div>
-    <div class="layer"><div class="layer-label">Expected<br>Outcomes</div><div class="layer-boxes">
-      <div class="box box-e"><h4>2 High-Quality Papers</h4><p>Target: IEEE TSE, ASE,<br>ACM TOSEM, JSS</p></div>
-      <div class="box box-e"><h4>1 Invention Patent</h4><p>Compositional code generation<br>with formal verification</p></div>
-      <div class="box box-e"><h4>1-2 Graduate Students</h4><p>Training in SE+AI<br>cross-disciplinary research</p></div>
+    <div class="conn">预期成果</div>
+    <div class="layer"><div class="layer-label">预期<br>成果</div><div class="layer-boxes">
+      <div class="box box-e"><h4>2篇高质量论文<br>目标：IEEE TSE/ASE/<br>ACM TOSEM/JSS</div>
+      <div class="box box-e"><h4>1项发明专利<br>组合式代码生成<br>+形式化验证方法</div>
+      <div class="box box-e"><h4>培养1-2名研究生<br>软件工程+AI<br>交叉学科方向</div>
     </div></div>
   </div>
   <div class="insight"><h4>Framework Logic</h4>

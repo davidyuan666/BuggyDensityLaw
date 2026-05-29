@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 11: Verification Complexity Scaling Law</title>
+<title>图11：验证复杂度标度律</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -19,16 +19,16 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 11: Verification Complexity Scaling Law</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图11：验证复杂度标度律</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Verification Complexity Scaling: The Practical Boundary of Formal Defect Ceiling</h1><div class="sub">Z3 SMT solving time and NuSMV model-checking time as functions of code size (LOC) and safety property count (|&Phi;|)</div></div>
+  <div class="title"><h1>验证复杂度标度律：形式化缺陷天花板的有效边界</h1><div class="sub">Z3 SMT求解时间和NuSMV模型检测时间随代码规模（LOC）和安全属性数量（|Φ|）的增长曲线 (|&Phi;|)</div></div>
   <div class="charts">
-    <div class="chart-box"><h3>(a) Solve Time vs Code Size (LOC)</h3><canvas id="chart1"></canvas></div>
-    <div class="chart-box"><h3>(b) Solve Time vs Property Count (|&Phi;|)</h3><canvas id="chart2"></canvas></div>
+    <div class="chart-box"><h3>(a) 求解时间 vs 代码规模 (LOC)</h3><canvas id="chart1"></canvas></div>
+    <div class="chart-box"><h3>(b) 求解时间 vs 属性数量 (|&Phi;|)</h3><canvas id="chart2"></canvas></div>
   </div>
-  <div class="insight"><h4>Practical Scope of the Formal Defect Ceiling</h4>
-    <p>Verification complexity follows its own scaling law: Z3 solving time grows as T<sub>Z3</sub> &prop; LOC<sup>1.4</sup> and NuSMV model-checking time grows as T<sub>SMV</sub> &prop; LOC<sup>2.1</sup>&middot;2<sup>|&Phi;|</sup>. Crucially, the <strong>slope of verification time growth is shallower than the defect density scaling slope</strong> for practical code sizes (LOC &lt; 500, |&Phi;| &lt; 10). Under a 60-second timeout, Z3 can verify safety properties for code up to ~400 LOC, and NuSMV up to ~200 LOC with 4 properties. This defines the engineering trade-off boundary of the "Formal Defect Ceiling" concept and motivates the compositional strategy (Research Content 3) to keep per-module code within these feasible verification bounds.</p></div>
-  <div class="note">Based on Z3 4.12 and NuSMV 2.6 benchmarks on industrial control-logic verification tasks.</div>
+  <div class="insight"><h4>形式化天花板的有效覆盖范围</h4>
+    <p>验证复杂度遵循自身的标度律：Z3求解时间大致为T_Z3&#8733;LOC^1.4，NuSMV验证时间约为T_SMV&#8733;LOC^2.1·2^{|Φ|}。关键观察：在LOC<400、属性数量<8的区间内，Z3求解时间在1秒以内——这个窗口足以覆盖绝大多数工业控制子模块。超过这个区间后迅速上升，恰恰说明了天花板的有限半径，也论证了组合式分解（研究内容三）的必要性。</p></div>
+  <div class="note">基于Z3 4.12和NuSMV 2.6在工业控制逻辑验证任务上的基准测试数据。</div>
 </div>
 <script>
 var locs=[20,40,60,80,100,150,200,300,400,500];
@@ -36,24 +36,24 @@ var z3_loc=[2,3,5,8,12,22,38,72,130,210];
 var nusmv_loc=[3,6,12,22,40,85,180,480,1100,2600];
 new Chart(document.getElementById('chart1').getContext('2d'),{
 type:'line',data:{labels:locs,datasets:[
-{label:'Z3 SMT Solver',data:z3_loc,borderColor:'#3498db',backgroundColor:'rgba(52,152,219,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
-{label:'NuSMV Model Checker',data:nusmv_loc,borderColor:'#8e44ad',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
+{label:'Z3 SMT求解器',data:z3_loc,borderColor:'#3498db',backgroundColor:'rgba(52,152,219,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
+{label:'NuSMV模型检测器',data:nusmv_loc,borderColor:'#8e44ad',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
 ]},options:{responsive:true,maintainAspectRatio:true,
 plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:true}}},
-scales:{x:{title:{display:true,text:'Code Size (LOC)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
-y:{title:{display:true,text:'Solve Time (ms)',color:'#333'},ticks:{color:'#666',callback:function(v){return v+' ms'}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
+scales:{x:{title:{display:true,text:'代码规模 (LOC)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
+y:{title:{display:true,text:'求解时间 (ms)',color:'#333'},ticks:{color:'#666',callback:function(v){return v+' ms'}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
 var phis=[1,2,3,4,5,6,8,10,12,15];
 var z3_phi=[1,2,3,4,6,8,14,24,38,68];
 var nusmv_phi=[2,5,12,28,68,165,650,2100,6000,20000];
 new Chart(document.getElementById('chart2').getContext('2d'),{
 type:'line',data:{labels:phis,datasets:[
-{label:'Z3 SMT Solver',data:z3_phi,borderColor:'#3498db',backgroundColor:'rgba(52,152,219,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
-{label:'NuSMV Model Checker',data:nusmv_phi,borderColor:'#8e44ad',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
+{label:'Z3 SMT求解器',data:z3_phi,borderColor:'#3498db',backgroundColor:'rgba(52,152,219,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
+{label:'NuSMV模型检测器',data:nusmv_phi,borderColor:'#8e44ad',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointRadius:4,fill:false,tension:.3},
 ]},options:{responsive:true,maintainAspectRatio:true,
 plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:true}}},
-scales:{x:{title:{display:true,text:'Property Count (|\u03A6|)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
-y:{title:{display:true,text:'Solve Time (ms)',color:'#333'},ticks:{color:'#666',callback:function(v){return v>999?(v/1000).toFixed(1)+'s':v+' ms'}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
+scales:{x:{title:{display:true,text:'属性数量 (|\u03A6|)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
+y:{title:{display:true,text:'求解时间 (ms)',color:'#333'},ticks:{color:'#666',callback:function(v){return v>999?(v/1000).toFixed(1)+'s':v+' ms'}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
 function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure11-Verification-Scaling.png';l.href=c.toDataURL('image/png');l.click()})}
 </script>

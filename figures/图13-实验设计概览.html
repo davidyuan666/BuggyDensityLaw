@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 13: Experiment Design Overview</title>
+<title>图13：实验设计概览</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8ecf1;font-family:"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px}
@@ -33,37 +33,37 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 13: Experiment Design Overview</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图13：实验设计概览</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Preliminary Experiment Design: Mapping the Defect Scaling Law</h1><div class="sub">3 Industrial control scenarios &times; 4 scale levels = 12 task configurations &times; multiple repeats = 39 independent experiments</div></div>
+  <div class="title"><h1>前期实验设计概览：标度律的实证映射</h1><div class="sub">3种工业控制场景 &times; 4 scale levels = 12 task configurations &times; multiple repeats = 39 independent experiments</div></div>
   <div class="content">
     <div class="matrix-area">
       <table class="matrix-table">
-        <tr><th>Scenario</th><th>small<br>(~30 LOC)</th><th>medium<br>(~70 LOC)</th><th>large<br>(~120 LOC)</th><th>xlarge<br>(~180 LOC)</th><th>Safety Props.</th><th>Total Tasks</th></tr>
-        <tr><td class="scene-name">Traffic Light Control</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/4/4</td><td>13</td></tr>
-        <tr><td class="scene-name">Conveyor Sorting</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/4/5</td><td>13</td></tr>
-        <tr><td class="scene-name">Robot Mutex Zone</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/5/6</td><td>13</td></tr>
-        <tr style="background:#f0f5f9;font-weight:600"><td>Total per Scale</td><td>12</td><td>12</td><td>9</td><td>6</td><td>&mdash;</td><td>39</td></tr>
+        <tr><th>场景</th><th>small<br>(~30行)</th><th>medium<br>(~70行)</th><th>large<br>(~120行)</th><th>xlarge<br>(~180行)</th><th>安全属性数</th><th>总任务数</th></tr>
+        <tr><td class="scene-name">交通灯控制</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/4/4</td><td>13</td></tr>
+        <tr><td class="scene-name">传送带分拣</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/4/5</td><td>13</td></tr>
+        <tr><td class="scene-name">机器人互斥工作区</td><td class="repeat">4&times;</td><td class="repeat">4&times;</td><td class="repeat">3&times;</td><td class="repeat">2&times;</td><td>2/3/5/6</td><td>13</td></tr>
+        <tr style="background:#f0f5f9;font-weight:600"><td>各规模合计</td><td>12</td><td>12</td><td>9</td><td>6</td><td>&mdash;</td><td>39</td></tr>
       </table>
     </div>
     <div class="pipeline-area">
-      <div class="pipeline-title">Verification Pipeline per Task</div>
-      <div class="pipe-step"><div class="num">1</div><div class="info"><h4>LLM Code Generation</h4><p>Qwen2.5-Coder-7B<br>Temperature=0.7<br>Max 2000 tokens</p></div></div>
+      <div class="pipeline-title">每个任务的验证管道</div>
+      <div class="pipe-step"><div class="num">1</div><div class="info"><h4>LLM代码生成<br>Qwen2.5-Coder-7B<br>温度=0.7</p></div></div>
       <div class="pipe-arrow">&#9660;</div>
-      <div class="pipe-step"><div class="num">2</div><div class="info"><h4>Syntax Check</h4><p>AST parsing<br>Syntax error detection<br>LOC counting</p></div></div>
+      <div class="pipe-step"><div class="num">2</div><div class="info"><h4>语法检查<br>AST解析<br>语法错误检测</p></div></div>
       <div class="pipe-arrow">&#9660;</div>
-      <div class="pipe-step"><div class="num">3</div><div class="info"><h4>Simulation Assertions</h4><p>Functional correctness<br>Behavioral validation<br>State machine conformance</p></div></div>
+      <div class="pipe-step"><div class="num">3</div><div class="info"><h4>仿真断言验证<br>功能正确性测试<br>状态机一致性检查</p></div></div>
       <div class="pipe-arrow">&#9660;</div>
-      <div class="pipe-step"><div class="num">4</div><div class="info"><h4>Safety Property Verification</h4><p>Z3 safety checks<br>NuSMV liveness checks<br>Mutual exclusion &amp; deadlock</p></div></div>
-      <div class="stats-box"><h4>Key Metrics Collected</h4>
-        <div class="stat"><span>Defect Density</span><span class="val">DD/100LOC</span></div>
-        <div class="stat"><span>Safety Pass Rate</span><span class="val">Before/After</span></div>
-        <div class="stat"><span>Verification Gain</span><span class="val">&Delta;%</span></div>
-        <div class="stat"><span>Syntax Error Rate</span><span class="val">% tasks</span></div>
+      <div class="pipe-step"><div class="num">4</div><div class="info"><h4>安全属性验证<br>Z3互斥检查<br>NuSMV活性检查</p></div></div>
+      <div class="stats-box"><h4>收集的关键指标</h4>
+        <div class="stat"><span>缺陷密度</span><span class="val">(/100LOC)</span></div>
+        <div class="stat"><span>安全通过率</span><span class="val">验证前/后</span></div>
+        <div class="stat"><span>验证增益</span><span class="val">&Delta;%</span></div>
+        <div class="stat"><span>语法错误率</span><span class="val">%</span></div>
       </div>
     </div>
   </div>
-  <div class="insight"><h4>Experiment Coverage &amp; Rationale</h4>
+  <div class="insight"><h4>实验覆盖范围与设计理由</h4>
     <p>The 3&times;4 design systematically covers the industrial control domain (discrete logic, sequential processes, resource coordination) while spanning an order of magnitude in code scale. Repeat counts are inversely proportional to scale (reducing from 4 to 2 as LOC grows) to balance statistical power against computation cost. The four-stage verification pipeline ensures comprehensive defect detection across syntax, functional, and safety-critical dimensions, enabling clean measurement of both the raw defect scaling law (after Step 2) and the verification ceiling effect (after Step 4).</p></div>
 </div>
 <script>function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure13-ExperimentDesign.png';l.href=c.toDataURL('image/png');l.click()})}</script>

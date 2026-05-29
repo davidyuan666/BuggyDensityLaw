@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figure 8: Multi-LLM Defect Density Scaling Comparison</title>
+<title>图8：多LLM缺陷密度标度律对比</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -19,13 +19,13 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 8: Multi-LLM Defect Density Scaling Comparison</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图8：多LLM缺陷密度标度律对比</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Cross-LLM Defect Density Scaling Law: Model Comparison</h1><div class="sub">GPT-4 vs DeepSeek-Coder-V2 vs Qwen2.5-Coder-7B across four code scale levels</div></div>
+  <div class="title"><h1>跨LLM缺陷密度标度律：模型对比</h1><div class="sub">GPT-4 / DeepSeek-Coder-V2 / Qwen2.5-Coder-7B 在四个代码规模等级上的缺陷密度</div></div>
   <div class="chart-box"><canvas id="chart"></canvas></div>
-  <div class="insight"><h4>Key Observation</h4>
-    <p>The defect density scaling law (alpha > 0) is a <strong>cross-model phenomenon</strong>: all three LLMs exhibit increasing defect density with code size, though with varying baseline rates (c) and scaling exponents (alpha). Qwen2.5-Coder-7B (our experimental baseline, solid fill) shows the highest scaling exponent (alpha=0.179), consistent with its smaller parameter count. GPT-4 and DeepSeek-Coder-V2 data are projected based on their reported code generation benchmarks and relative model capacities. This cross-model consistency validates the universality of the scaling law hypothesis and motivates model-agnostic suppression methods.</p></div>
-  <div class="legend"><span class="note">* GPT-4 & DeepSeek-Coder data are projected estimates from benchmark baselines; Qwen2.5 data is empirical (this study).</span></div>
+  <div class="insight"><h4>核心观察</h4>
+    <p>缺陷密度标度律（alpha>0）是一个跨模型现象：三种LLM均表现出缺陷密度随代码规模递增的趋势。Qwen2.5-Coder-7B（实心填充，本研究实测）展现出最高的标度指数，GPT-4和DeepSeek-Coder-V2的数据为基于已有基准的预计值。跨模型一致性验证了标度律假说的普适性。</p></div>
+  <div class="legend"><span class="note">* GPT-4和DeepSeek-Coder数据为基于基准的预计值；Qwen2.5数据为实证数据（本研究）。</span></div>
 </div>
 <script>
 var labels=['small (~30 LOC)','medium (~70 LOC)','large (~120 LOC)','xlarge (~180 LOC)'];
@@ -34,12 +34,12 @@ var dd_ds=[5.9,6.8,8.4,12.1];
 var dd_qwen=[7.9,6.8,8.5,13.7];
 new Chart(document.getElementById('chart').getContext('2d'),{
 type:'bar',data:{labels:labels,datasets:[
-{label:'GPT-4 (projected)',data:dd_gpt4,backgroundColor:'rgba(52,152,219,.6)',borderColor:'#2471a3',borderWidth:1},
-{label:'DeepSeek-Coder-V2 (projected)',data:dd_ds,backgroundColor:'rgba(39,174,96,.6)',borderColor:'#1e8449',borderWidth:1},
-{label:'Qwen2.5-Coder-7B (empirical)',data:dd_qwen,backgroundColor:'rgba(230,126,34,.75)',borderColor:'#ba4a00',borderWidth:1.5,borderDash:[]},
+{label:'GPT-4（预计值）',data:dd_gpt4,backgroundColor:'rgba(52,152,219,.6)',borderColor:'#2471a3',borderWidth:1},
+{label:'DeepSeek-Coder-V2（预计值）',data:dd_ds,backgroundColor:'rgba(39,174,96,.6)',borderColor:'#1e8449',borderWidth:1},
+{label:'Qwen2.5-Coder-7B（实测）',data:dd_qwen,backgroundColor:'rgba(230,126,34,.75)',borderColor:'#ba4a00',borderWidth:1.5,borderDash:[]},
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#555',font:{size:12},padding:16,usePointStyle:true,pointStyleWidth:8}}},
-scales:{x:{title:{display:true,text:'Code Scale Level',color:'#333',font:{size:13,weight:'bold'}},ticks:{color:'#666',font:{size:11}},grid:{drawOnChartArea:false}},
-y:{title:{display:true,text:'Defect Density (/100 LOC)',color:'#333',font:{size:13,weight:'bold'}},ticks:{color:'#666',font:{size:11}},grid:{color:'#eee',lineWidth:.5}}}}
+scales:{x:{title:{display:true,text:'代码规模等级',color:'#333',font:{size:13,weight:'bold'}},ticks:{color:'#666',font:{size:11}},grid:{drawOnChartArea:false}},
+y:{title:{display:true,text:'缺陷密度 (/100 LOC)',color:'#333',font:{size:13,weight:'bold'}},ticks:{color:'#666',font:{size:11}},grid:{color:'#eee',lineWidth:.5}}}}
 });
 function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure8-MultiLLM-Defect-Scaling.png';l.href=c.toDataURL('image/png');l.click()})}
 </script>

@@ -19,16 +19,16 @@
 </style>
 </head>
 <body>
-<div class="toolbar"><span>Figure 10: Compositional Correctness vs Monolithic Generation</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
+<div class="toolbar"><span>图10：组合式正确性 vs 单体生成</span><button onclick="downloadPNG()">Download PNG (2x)</button></div>
 <div id="canvas">
-  <div class="title"><h1>Breaking the Scaling Law: Compositional Correctness vs Monolithic Generation</h1><div class="sub">System-level defect density under decomposition into k independently-verified sub-modules (&epsilon;=0.05, N=200 LOC)</div></div>
+  <div class="title"><h1>突破标度律：组合式正确性 vs 单体生成</h1><div class="sub">分解为k个独立验证子模块后的系统级缺陷密度 (&epsilon;=0.05, N=200 LOC)</div></div>
   <div class="charts">
-    <div class="chart-box"><h3>(a) System-Level Correctness Probability</h3><canvas id="chart1"></canvas></div>
-    <div class="chart-box"><h3>(b) Expected Defect Density Ratio</h3><canvas id="chart2"></canvas></div>
+    <div class="chart-box"><h3>(a) 系统级正确概率</h3><canvas id="chart1"></canvas></div>
+    <div class="chart-box"><h3>(b) 预期缺陷密度比值</h3><canvas id="chart2"></canvas></div>
   </div>
-  <div class="insight"><h4>Exponential Advantage of Compositional Strategy</h4>
-    <p>The compositional correctness strategy yields an <strong>exponential advantage</strong> over monolithic generation. With k=5 sub-modules and per-module verification pass rate p=0.85, the system-level correctness probability reaches 0.44 (vs 4.5&times;10<sup>-5</sup> for monolithic generation at N=200 tokens, &epsilon;=0.05). The expected defect density ratio (monolithic/compositional) grows exponentially with k, matching BES Theorem 4.5's theoretical prediction of &Omega;(p<sup>-(m-1)</sup>/log m). This provides the mathematical foundation for our "breaking the scaling law" claim in Innovation Point 3.</p></div>
-  <div class="note">Per-module size: n = N/k = 200/k LOC. Per-module verification pass rate: p = (1-&epsilon;)<sup>n</sup>.</div>
+  <div class="insight"><h4>组合式策略的指数级优势</h4>
+    <p>组合式策略在子模块数量上产生了指数级优势。当k=5时（每子模块约40 LOC），组合式生成的系统正确概率达到0.44，而同条件下单体生成的正确概率仅有4.5&#215;10<sup>-5</sup>——差距近8000倍。缺陷密度比值随k呈指数增长，与BES框架Theorem 4.5的理论预测一致。</p></div>
+  <div class="note">子模块大小：n = N/k = 200/k LOC. 子模块验证通过率：p = (1-&epsilon;)<sup>n</sup>.</div>
 </div>
 <script>
 var ks=[1,2,3,4,5,6,8,10,12,15];
@@ -43,20 +43,20 @@ for(var i=0;i<ks.length;i++){
 }
 new Chart(document.getElementById('chart1').getContext('2d'),{
 type:'bar',data:{labels:ks.map(function(k){return'k='+k}),datasets:[
-{label:'Monolithic (P_system)',data:pm,backgroundColor:'rgba(231,76,60,.6)',borderColor:'#c0392b',borderWidth:1},
-{label:'Compositional (P_system)',data:pcomp,backgroundColor:'rgba(39,174,96,.6)',borderColor:'#1e8449',borderWidth:1}
+{label:'单体生成 (P_系统)',data:pm,backgroundColor:'rgba(231,76,60,.6)',borderColor:'#c0392b',borderWidth:1},
+{label:'组合式生成 (P_系统)',data:pcomp,backgroundColor:'rgba(39,174,96,.6)',borderColor:'#1e8449',borderWidth:1}
 ]},options:{responsive:true,maintainAspectRatio:true,
 plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:true}}},
-scales:{x:{title:{display:true,text:'Number of Sub-modules (k)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
-y:{title:{display:true,text:'P(system correct)',color:'#333'},ticks:{color:'#666',callback:function(v){return v<0.001?v.toExponential(1):v.toFixed(3)}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
+scales:{x:{title:{display:true,text:'子模块数量 (k)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
+y:{title:{display:true,text:'P(系统正确)',color:'#333'},ticks:{color:'#666',callback:function(v){return v<0.001?v.toExponential(1):v.toFixed(3)}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
 new Chart(document.getElementById('chart2').getContext('2d'),{
 type:'bar',data:{labels:ks.slice(1).map(function(k){return'k='+k}),datasets:[
-{label:'Advantage Ratio (Comp/Mono)',data:ratios.slice(1),backgroundColor:'rgba(52,152,219,.6)',borderColor:'#2471a3',borderWidth:1}
+{label:'优势比（组合/单体）',data:ratios.slice(1),backgroundColor:'rgba(52,152,219,.6)',borderColor:'#2471a3',borderWidth:1}
 ]},options:{responsive:true,maintainAspectRatio:true,
 plugins:{legend:{labels:{color:'#555',font:{size:11},padding:12,usePointStyle:true}}},
-scales:{x:{title:{display:true,text:'Number of Sub-modules (k)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
-y:{title:{display:true,text:'Advantage Ratio',color:'#333'},ticks:{color:'#666',callback:function(v){return v.toExponential(0)}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
+scales:{x:{title:{display:true,text:'子模块数量 (k)',color:'#333'},ticks:{color:'#666',font:{size:10}},grid:{drawOnChartArea:false}},
+y:{title:{display:true,text:'优势比',color:'#333'},ticks:{color:'#666',callback:function(v){return v.toExponential(0)}},grid:{color:'#eee',lineWidth:.5},type:'logarithmic'}}}
 });
 function downloadPNG(){html2canvas(document.getElementById('canvas'),{scale:2,useCORS:true,backgroundColor:'#ffffff'}).then(function(c){var l=document.createElement('a');l.download='Figure10-Compositional-vs-Monolithic.png';l.href=c.toDataURL('image/png');l.click()})}
 </script>
